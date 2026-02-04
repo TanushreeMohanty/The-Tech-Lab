@@ -7,7 +7,9 @@ export type ContentBlock = {
   subTitle?: string;
   text: string;
   code?: string;
+  list?: string[]; // Add this line
   outputImage?: string;
+  outputCode?: string; // Add this for text-based terminal outputs
 };
 
 export type TopicContent = {
@@ -53,8 +55,8 @@ export const navigation = [
         id: "python", 
         title: "Python", 
         topics: [
-          { id: "abc", label: "Basics" }, //label is topic title shown in sidebar
-          { id: "data-types", label: "Data Types" }
+          { id: "Basics", label: "Basics" }, //label is topic title shown in sidebar
+          { id: "Built", label: "Built-in Functions" },
         ] 
       },
     //   {

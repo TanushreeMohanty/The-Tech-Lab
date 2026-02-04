@@ -2,24 +2,29 @@
 
 :root {
   --bg-dark: #020617;
-  --cyan-glow: #22d3ee;
-  --fuchsia-glow: #e879f9;
+  --cyan-glow: #06b6d4;
+  --fuchsia-glow: #d946ef;
+  --emerald-glow: #10b981;
 }
 
 body {
   background-color: var(--bg-dark);
-  /* Enhanced Grid with Depth */
+  /* Enhanced Blueprint Grid */
   background-image: 
-    radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.05) 1px, transparent 0);
-  background-size: 32px 32px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
   color: #f1f5f9;
+  min-height: 100vh;
+  /* Smooth scrolling for long lab blocks */
+  scroll-behavior: smooth;
 }
 
 /* Glassmorphism Evolution */
 .glass-panel {
-  background: rgba(8, 10, 24, 0.7);
+  background: rgba(8, 10, 24, 0.8);
   backdrop-filter: blur(24px) saturate(160%);
-  box-shadow: 10px 0 50px -15px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Base Nav Button */
@@ -34,25 +39,58 @@ body {
 /* Active State: Web (Cyan Glow) */
 .active-web {
   @apply text-cyan-400 bg-cyan-500/10 border border-cyan-500/30;
-  box-shadow: inset 0 0 12px rgba(34, 211, 238, 0.1);
+  box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.15);
 }
 
 /* Active State: AI/ML (Fuchsia Glow) */
 .active-ml {
   @apply text-fuchsia-400 bg-fuchsia-500/10 border border-fuchsia-500/30;
-  box-shadow: inset 0 0 12px rgba(232, 121, 249, 0.1);
+  box-shadow: inset 0 0 20px rgba(217, 70, 239, 0.15);
 }
 
-/* Text & Visual Effects */
+/* Typography Effects */
 .text-glow-blue {
-  text-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+  text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
 }
 
+/* 🚀 Responsive Code & Terminal Fixes */
+pre, code {
+  max-width: 100%;
+  overflow-x: auto;
+  /* Prevents the "Bad UI" where code pushes off-screen */
+  white-space: pre; 
+  word-wrap: normal;
+}
+
+/* Custom Tactical Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Utility to hide main scrollbar but keep functionality */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* Custom Animation for Mobile Drawer */
-@keyframes slideIn {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
+/* Animated Blueprint Lines */
+@keyframes pulseLine {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-line {
+  animation: pulseLine 4s infinite ease-in-out;
 }
