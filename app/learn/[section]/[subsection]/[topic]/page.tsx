@@ -42,7 +42,7 @@ export default async function LabPage({
 
             {block.subTitle && (
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <span className="w-8 h-[1px] bg-zinc-800" />
+                <span className="w-8 h-1px bg-zinc-800" />
                 {block.subTitle}
               </h2>
             )}
@@ -83,7 +83,7 @@ export default async function LabPage({
                       <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
                       Rendering Output
                     </p>
-                    <div className="p-1 rounded-3xl bg-gradient-to-br from-white/10 to-transparent">
+                    <div className="p-1 rounded-3xl bg-linear-to-br from-white/10 to-transparent">
                       <img 
                         src={block.outputImage} 
                         className="rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 border border-white/10" 

@@ -28,7 +28,7 @@ export default function Sidebar() {
       {/* Dynamic Mobile Trigger */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-gradient-to-tr from-blue-600 to-fuchsia-600 rounded-2xl text-white shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-90 transition-all duration-300"
+        className="lg:hidden fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-linear-to-tr from-blue-600 to-fuchsia-600 rounded-2xl text-white shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-90 transition-all duration-300"
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
