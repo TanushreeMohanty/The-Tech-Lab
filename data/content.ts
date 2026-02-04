@@ -55,8 +55,13 @@ export const navigation = [
         id: "python", 
         title: "Python", 
         topics: [
-          { id: "Basics", label: "Basics" }, //label is topic title shown in sidebar
-          { id: "Built", label: "Built-in Functions" },
+          { id: "Basics", label: "Basics :)" }, //label is topic title shown in sidebar
+          {id:"Operators", label: "Operators :)"},
+          {id:"Cond", label: "Conditional Statements :)"},
+          {id:"Loops", label: "Loops :)"},
+          {id:"Functions", label: "Functions :)"},
+          { id: "Rough", label: "Rough Work" }, 
+          { id:"Questions", label: "Questions"}
         ] 
       },
     //   {

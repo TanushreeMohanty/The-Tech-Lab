@@ -12,16 +12,15 @@ export default async function LabPage({
     if (!content) return notFound();
 
     return (
-        /* Removed max-w-6xl to allow the content to spread across the full width of the screen */
         <div className="w-full px-6 md:px-12 py-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            
-            {/* Tactical Header - Responsive Margins */}
+
+            {/* Tactical Header */}
             <header className="relative mb-24 pb-12 border-b border-white/10 ml-8 lg:ml-24">
                 <div className="flex items-center gap-4 mb-8">
                     <div className={`w-1.5 h-10 ${section === 'ai-ml' ? 'bg-fuchsia-500 shadow-[0_0_20px_rgba(217,70,239,0.6)]' : 'bg-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.6)]'} rounded-full`} />
                     <nav className="font-mono text-[11px] uppercase tracking-[0.4em] text-zinc-500 flex items-center gap-2">
                         <span className="hover:text-zinc-300 transition-colors cursor-default">{section.replace('-', ' ')}</span>
-                        <span className="text-zinc-800 font-bold px-2">//</span> 
+                        <span className="text-zinc-800 font-bold px-2">//</span>
                         <span className="text-zinc-400">{subsection.replace('-', ' ')}</span>
                     </nav>
                 </div>
@@ -39,14 +38,12 @@ export default async function LabPage({
             <div className="space-y-40 ml-8 lg:ml-24">
                 {content.blocks.map((block, index) => {
                     const hasTechnicalAssets = !!(block.code || block.outputImage || block.outputCode);
+                    const hastextContent = !!(block.text || block.list);
 
                     return (
                         <section key={index} className="group relative pl-12 lg:pl-16">
-                            
-                            {/* Vertical Progress Line Decor */}
                             <div className="absolute left-0 top-0 bottom-0 w-1px bg-white/5 group-hover:bg-white/20 transition-all duration-500" />
-                            
-                            {/* Numbering Decor - Moved out of the way of the content */}
+
                             <div className="absolute -left-12 lg:-left-24 top-0 font-mono text-zinc-900 text-4xl lg:text-6xl font-black select-none group-hover:text-zinc-800/50 transition-colors duration-500 pointer-events-none">
                                 0{index + 1}
                             </div>
@@ -60,15 +57,16 @@ export default async function LabPage({
                                 </div>
                             )}
 
-                            {/* Dynamic Grid: If no text, technical assets take the whole width. If no assets, text takes the whole width. */}
-                            <div className={`grid grid-cols-1 ${hasTechnicalAssets && block.text ? 'lg:grid-cols-12' : 'grid-cols-1'} gap-12 lg:gap-20 items-start w-full`}>
-                                
-                                {/* Text Content Area */}
-                                {block.text && (
+                            <div className={`grid grid-cols-1 ${hasTechnicalAssets && hastextContent ? 'lg:grid-cols-12' : 'grid-cols-1'} gap-12 lg:gap-20 items-start w-full`}>
+
+                                {/* Text Content Area - Updated logic to handle list-only blocks */}
+                                {hastextContent && (
                                     <div className={`${hasTechnicalAssets ? 'lg:col-span-5' : 'w-full'} space-y-8`}>
-                                        <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed max-w-none font-light">
-                                            {block.text}
-                                        </p>
+                                        {block.text && (
+                                            <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed max-w-none font-light">
+                                                {block.text}
+                                            </p>
+                                        )}
 
                                         {block.list && (
                                             <ul className={`grid gap-6 pt-6 ${hasTechnicalAssets ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}`}>
@@ -83,10 +81,9 @@ export default async function LabPage({
                                     </div>
                                 )}
 
-                                {/* Technical Assets Area - Now strictly w-full responsive */}
+                                {/* Technical Assets Area */}
                                 {hasTechnicalAssets && (
-                                    <div className={`${block.text ? 'lg:col-span-7' : 'w-full'} space-y-12 w-full`}>
-                                        {/* Code Terminal */}
+                                    <div className={`${hastextContent ? 'lg:col-span-7' : 'w-full'} space-y-12 w-full`}>
                                         {block.code && (
                                             <div className="w-full rounded-2xl border border-white/10 bg-[#080808] backdrop-blur-xl overflow-hidden shadow-2xl ring-1 ring-white/5 group-hover:border-white/20 transition-colors">
                                                 <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-white/10">
@@ -107,7 +104,6 @@ export default async function LabPage({
                                             </div>
                                         )}
 
-                                        {/* Visual Output Rendering */}
                                         {block.outputImage && (
                                             <div className="w-full space-y-4">
                                                 <div className="flex items-center gap-3 px-1">
@@ -124,7 +120,6 @@ export default async function LabPage({
                                             </div>
                                         )}
 
-                                        {/* Console Output */}
                                         {block.outputCode && (
                                             <div className="w-full rounded-2xl border border-emerald-500/20 bg-[#020202] overflow-hidden shadow-2xl ring-1 ring-emerald-500/10">
                                                 <div className="flex items-center gap-3 px-6 py-3 bg-emerald-500/5 border-b border-emerald-500/20">
@@ -143,7 +138,6 @@ export default async function LabPage({
                 })}
             </div>
 
-            {/* Footer Sign-off */}
             <footer className="mt-48 pt-12 border-t border-white/5 flex justify-between items-center text-[11px] font-mono text-zinc-700 uppercase tracking-[0.3em] ml-8 lg:ml-24">
                 <span>System // {content.title}</span>
                 <span className="flex items-center gap-2">
