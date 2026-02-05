@@ -20,58 +20,68 @@ export type TopicContent = {
 };
 
 // Combine all content into one searchable record
-export const labData: Record<string, Record<string, Record<string, TopicContent>>> = {
+export const labData: Record<
+  string,
+  Record<string, Record<string, TopicContent>>
+> = {
   "web-development": webDevContent,
   "ai-ml": aiMlContent,
 };
 
 // Sidebar Navigation structure
 export const navigation = [
-//   {
-//     id: "web-development",
-//     title: "Web Development",
-//     subsections: [
-//       { 
-//         id: "html", 
-//         title: "HTML", 
-//         topics: [
-//           { id: "intro", label: "Intro" }
-//         ] 
-//       },
-//       { 
-//         id: "react", 
-//         title: "React", 
-//         topics: [
-//           { id: "hooks", label: "Hooks" }
-//         ] 
-//       },
-//     ],
-//   },
+  //   {
+  //     id: "web-development",
+  //     title: "Web Development",
+  //     subsections: [
+  //       {
+  //         id: "html",
+  //         title: "HTML",
+  //         topics: [
+  //           { id: "intro", label: "Intro" }
+  //         ]
+  //       },
+  //       {
+  //         id: "react",
+  //         title: "React",
+  //         topics: [
+  //           { id: "hooks", label: "Hooks" }
+  //         ]
+  //       },
+  //     ],
+  //   },
   {
     id: "ai-ml",
     title: "AI / ML",
     subsections: [
-      { 
-        id: "python", 
-        title: "Python", 
+      {
+        id: "python",
+        title: "Python",
         topics: [
           { id: "Basics", label: "Basics :)" }, //label is topic title shown in sidebar
-          {id:"Operators", label: "Operators :)"},
-          {id:"Cond", label: "Conditional Statements :)"},
-          {id:"Loops", label: "Loops :)"},
-          {id:"Functions", label: "Functions :)"},
-          { id: "Rough", label: "Rough Work" }, 
-          { id:"Questions", label: "Questions"}
-        ] 
+          { id: "Operators", label: "Operators :)" },
+          { id: "Cond", label: "Conditional Statements :)" },
+          { id: "Loops", label: "Loops :)" },
+          { id: "Functions", label: "Functions :)" },
+          { id: "Strings", label: "Strings :)" },
+          { id: "Lists", label: "Lists" },
+          { id: "Tuples", label: "Tuples" },
+          { id: "Dict", label: "Dictionaries" },
+          { id: "Sets", label: "Sets" },
+          { id: "OOPS", label: "OOPs" },
+          { id: "FileHandling", label: "File Handling" },
+          { id: "Questions", label: "Questions" },
+          { id: "Rough", label: "Rough Work" },
+        ],
       },
-    //   {
-    //     id: "data-science",
-    //     title: "Data Science",
-    //     topics: [
-    //       { id: "matplotlib-basics", label: "Matplotlib" },
-    //       { id: "pandas-intro", label: "Pandas" }
-    //     ]
-    //   }
+      //   {
+      //     id: "data-science",
+      //     title: "Data Science",
+      //     topics: [
+      //       { id: "matplotlib-basics", label: "Matplotlib" },
+      //       { id: "pandas-intro", label: "Pandas" }
+      //     ]
+      //   }
     ],
   },
 ];

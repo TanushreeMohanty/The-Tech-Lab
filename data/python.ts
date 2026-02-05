@@ -195,7 +195,7 @@ export const pythonContent: Record<string, TopicContent> = {
   },
   Loops: {
     id: "Loops",
-    title: "PythonLoops",
+    title: "Python Loops",
     description:
       "Python provides two primary loop types: 'for' loops for iterating over sequences and 'while' loops for repeating code based on a condition.",
     blocks: [
@@ -307,7 +307,678 @@ export const pythonContent: Record<string, TopicContent> = {
       },
     ],
   },
+    Strings: {
+    id: "Strings",
+    title: "Python Strings",
+    description:
+      "Strings are sequences of characters used to store and manipulate text data. Python provides a rich set of operations and methods to work with strings effectively.",
+    blocks: [
+      {
+        subTitle: "Introduction to Strings",
+        text:"",
+        list: [
+          "Definition: A sequence of characters (e.g., 'python').",
+          "Length: The len() function returns the total number of characters in a string.",
+          "Flexibility: Strings can be defined using single (' ') or double (\" \") quotes.",
+        ],
+        code: '# String definition and length\nword = "python"\nprint(len(word))',
+        outputCode: "6",
+      },
+      {
+        subTitle: "String Concatenation",
+        text: "Joining two or more strings together is called concatenation. This is commonly used to combine variable data into full sentences.",
+        list: [
+          "Operator (+): Used to merge two string variables.",
+          'Spacing: You can concatenate a literal space " " between words for proper formatting.',
+          "Type Rule: You can only concatenate strings with other strings.",
+        ],
+        code: '# Concatenating with spaces\nword1 = "I love"\nword2 = "python"\n\n# Adding a literal space\nprint(word1 + " " + word2)',
+        outputCode: "I love python",
+      },
+      {
+        subTitle: "Indexing & Immutability",
+        text: "Every character in a string has a specific position called an index. While you can access characters via indexing, you cannot modify them directly because strings are immutable.",
+        list: [
+          "Positioning: Indexing starts at 0 and goes up to length - 1 (e.g., 'p' is at index 0).",
+          "Accessing: Use square brackets word[index] to retrieve a specific character.",
+          "Immutability: You cannot change a character at a specific index (e.g., word[0] = 'B' will cause an error).",
+          "Iteration: You can use a 'for' loop to iterate through every character in a string.",
+        ],
+        code: '# Accessing by index\nword = "Python"\nprint(word[0])  # Output: P\n\n# Iterating through a string\nfor ch in word:\n    print(ch)',
+        outputCode: "P\ny\nt\nh\no\nn",
+      },
+      {
+        subTitle: "String Slicing",
+        text: "Slicing is used to extract a specific portion of a string. By providing a start and end index, you create a new substring without modifying the original string.",
+        list: [
+          "Syntax: str[start_index : end_index].",
+          "Rule: The character at the end index is NOT included in the final result.",
+        ],
+        code: "# Slicing Example\nword = \"Python\"\n\n# Extracting 'th'\nsubstring = word[2:4]\nprint(substring)",
+        outputCode: "th",
+      },
+      {
+        subTitle: "Negative Slicing",
+        text: "Negative indices allow you to access characters from the end of the string. Slicing with negative values follows the same 'start included, end excluded' rule.",
+        list: [
+          "Positioning: The last character is -1, the second to last is -2, and so on.",
+          "Range: word[-4 : -2] starts at index -4 and ends just before index -2.",
+        ],
+        code: "# Negative Slicing\nword = \"Python\"\n\n# Extracting 'th' using negative indices\nprint(word[-4:-2])",
+        outputCode: "th",
+      },
+      {
+        subTitle: "The .format() Method",
+        text: "The .format() method allows you to create dynamic strings by inserting variable values into placeholders within a string template.",
+        list: [
+          "Normal: Placeholders are filled in the order arguments are provided.",
+          "Index-Based: Use numbers {0}, {1} to control the exact position of each argument.",
+          "Value-Based: Assign names within placeholders {name} for clearer, keyword-based mapping.",
+          "Versatility: This method is a standard feature in Python 3 for creating dynamic strings.",
+        ],
+        code: '# Using .format() in different ways\na, b = 5, 10\nsum = a + b\n\n# Normal placement\nprint("sum of {} & {} is {}".format(a, b, sum))\n\n# Index-based (swapping a and b positions)\nprint("sum of {1} & {0} is {2}".format(a, b, sum))\n\n# Value-based assignment\nprint("{a} values of vars {a} & {b}".format(a=5, b=10))',
+        outputCode:
+          "sum of 5 & 10 is 15\nsum of 10 & 5 is 15\n5 values of vars 5 & 10",
+      },
+      {
+        subTitle: "F-Strings (Literal Interpolation)",
+        text: "F-strings provide a concise and readable way to embed expressions inside string literals, using curly braces {}. They were introduced in Python 3.6 and have become the preferred method for string formatting.",
+        list: [
+          "Syntax: Prefix the string with 'f' (e.g., f\"Hello {name}\").",
+          "Direct Embedding: Place variable names directly inside the curly braces.",
+          "Expressions: You can perform calculations directly within the placeholders.",
+          "Readability: F-strings are generally cleaner and easier to read than the .format() method.",
+        ],
+        code: '# Using F-Strings for variables and math\na = 5\nb = 10\n\n# Calculation directly inside the string\nprint(f`avg of {a} & {b} is {(a + b) / 2}`)',
+        outputCode: "avg of 5 & 10 is 7.5",
+      },
+    ],
+  },
   // Unchecked section
+  Lists: {
+    id: "Lists",
+    title: "Python Lists",
+    description:
+      "Lists are ordered collections of items that can hold multiple data types. They are mutable, allowing you to modify their contents after creation.",
+    blocks: [
+      {
+        subTitle: "Python Lists",
+        text: "A list is a mutable sequence of values. It is one of the most powerful and flexible data structures in Python, capable of holding multiple items of different data types.",
+        list: [
+          "Definition: A mutable sequence used to store a collection of values.",
+          "Heterogeneous: A single list can store different types of data (integers, strings, floats).",
+          "Mutability: You can modify, add, or remove elements after the list has been defined.",
+          "Length: Use the len() function to find the total number of elements in a list.",
+        ],
+        code: '# List with mixed data types\nmarks = [99, 89, 100, 65, 92, "abc", 100.99]\n\nprint(type(marks))\nprint(len(marks))',
+        outputCode: "<class 'list'>\n7",
+      },
+      {
+        subTitle: "List Indexing",
+        text: "Accessing elements in a list is done through indexing. Because lists are mutable, you can use indexing to both retrieve and update specific values.",
+        list: [
+          "Positioning: The first element is at index 0, the second at index 1, etc.",
+          "Accessing: Use square brackets marks[index] to get a specific value.",
+          "Updating: You can reassign a value directly (e.g., marks[0] = 95).",
+          "Range: Valid indices range from 0 to len(list) - 1.",
+        ],
+        code: "# Accessing elements by index\nmarks = [99, 89, 100, 65, 92]\n\nprint(marks[0])  # Output: 99\nprint(marks[4])  # Output: 92",
+        outputCode: "99\n92",
+      },
+      {
+        subTitle: "List Slicing",
+        text: "Slicing is used to retrieve a specific portion of a list. This creates a new 'sublist' containing the requested range of elements.",
+        list: [
+          "Syntax: list[st_idx : end_indx].",
+          "Rule: The element at the 'end_indx' is NOT included in the result.",
+          "Defaults: If omitted, st_idx defaults to 0 and end_indx defaults to the total length of the list.",
+          "Sublists: Slicing returns a new list object containing the specified range.",
+        ],
+        code: "# Slicing a list\nmarks = [99, 89, 100, 65, 92]\n\n# Extracting elements from index 1 to 3\nsub_list = marks[1:4]\nprint(sub_list)",
+        outputCode: "[89, 100, 65]",
+      },
+      {
+        subTitle: "List Methods",
+        text: "Python provides several built-in methods (functions) specifically for lists. These allow you to easily modify the contents of a list, from adding new elements to reordering existing ones.",
+        list: [
+          "append(val): Adds a single element to the very end of the list.",
+          "insert(idx, val): Inserts an element at a specific index, shifting subsequent items to the right.",
+          "sort(): Arranges the list items in increasing order by default.",
+          "sort(reverse=True): Directly sorts the list in descending (decreasing) order.",
+          "reverse(): Reverses the current order of elements in the list.",
+        ],
+        code: '# List Method Examples\nnums = [1, 2, 3]\n\n# Adding an element at the end\nnums.append(4)\nprint(f"After append: {nums}")\n\n# Inserting 10 at index 2\nnums.insert(2, 10)\nprint(f"After insert: {nums}")\n\n# Sorting in descending order\nnums.sort(reverse=True)\nprint(f"After descending sort: {nums}")',
+        outputCode:
+          "After append: [1, 2, 3, 4]\nAfter insert: [1, 2, 10, 3, 4]\nAfter descending sort: [10, 4, 3, 2, 1]",
+      },
+      {
+        subTitle: "Iterating & Searching Lists",
+        text: "Loops are essential for processing every item in a list. You can use a 'for' loop to iterate through all elements or add conditional logic to find a specific value and terminate the loop early using 'break'.",
+        list: [
+          "Iteration: A 'for' loop can directly access each element (val) within a list sequence.",
+          "Linear Search: By combining a loop with a counter (idx) and an 'if' statement, you can locate specific data.",
+          "The 'break' Statement: Used to stop a loop immediately once a specific condition is met, saving processing power.",
+          "Indexing in Loops: Manually tracking an index variable allows you to report the exact position of found data.",
+        ],
+        code: '# Searching for a value in a list\nnums = [1, 2, 3, 10, 4]\nx = 10\nidx = 0\n\nfor val in nums:\n    if(val == x):\n        print(f"{x} found at idx={idx}")\n        break\n    idx += 1',
+        outputCode: "10 found at idx=3",
+      },
+    ],
+  },
+  Tuples: {
+    id: "Tuples",
+    title: "Python Tuples",
+    description:
+      "Tuples are ordered collections of items similar to lists, but they are immutable, meaning their contents cannot be changed after creation. They are useful for storing fixed sets of data.",
+    blocks: [
+      {
+        subTitle: "Python Tuples",
+        text: "A tuple is an immutable sequence of values. It is used to store multiple items in a single variable, particularly when you want to ensure the data remains constant throughout the program.",
+        list: [
+          "Definition: An immutable sequence of values that cannot be modified after creation.",
+          "Syntax: Defined using parentheses () instead of square brackets [].",
+          "Heterogeneous: Can store different data types, including integers, strings, and floats.",
+          "Type Check: Use type() to verify a variable is a <class 'tuple'>.",
+        ],
+        code: '# Defining a tuple\ntup = (1, 2, 3, 4, 5, "abc", 3.14)\n\nprint(tup)\nprint(type(tup))',
+        outputCode: "(1, 2, 3, 4, 5, 'abc', 3.14)\n<class 'tuple'>",
+      },
+      {
+        subTitle: "Single Element Tuples",
+        text: "When creating a tuple with only one item, you must include a comma after the element. Without the comma, Python will interpret the parentheses as a standard expression and assign the type of the inner value.",
+        list: [
+          "The Comma Rule: Use (val,) to define a single-item tuple.",
+          "Type Inference: Without a comma, tup = (\"abc\") is treated as a string (<class 'str'>).",
+          'Correct Syntax: tup = ("abc",) is correctly identified as a tuple.',
+        ],
+        code: '# Single element tuple vs. expression\nt1 = ("abc")\nprint(f"t1 type: {type(t1)}")\n\nt2 = ("abc",)\nprint(f"t2 type: {type(t2)}")',
+        outputCode: "t1 type: <class 'str'>\nt2 type: <class 'tuple'>",
+      },
+      {
+        subTitle: "Indexing & Slicing",
+        text: "You can access elements in a tuple using their position (index) or retrieve a range of elements using slicing. The rules for start and end indices are identical to those used for lists.",
+        list: [
+          "Indexing: Access individual items using tup[index] (e.g., tup[2] is the third item).",
+          "Length: Use len(tup) to find the total number of elements.",
+          "Slicing: Create a new sub-tuple using tup[start:end] (end index is excluded).",
+          "Non-destructive: Slicing returns a new tuple without altering the original.",
+        ],
+        code: '# Accessing and slicing\ntup = (1, 2, 3, 4, 5)\n\nprint(f"Element at idx 2: {tup[2]}")\nprint(f"Slice [0:3]: {tup[0:3]}")',
+        outputCode: "Element at idx 2: 3\nSlice [0:3]: (1, 2, 3)",
+      },
+      {
+        subTitle: "Tuple Methods",
+        text: "Since tuples are immutable, their methods do not modify the original data. Instead, they provide information about the contents of the tuple, such as the location or frequency of specific values.",
+        list: [
+          "index(val): Returns the index of the first occurrence of the specified value.",
+          "count(val): Calculates and returns the total number of times a specific value appears in the tuple.",
+          "Iteration: You can use a 'for' loop to iterate through every item in a tuple sequence, similar to a list.",
+        ],
+        code: "# Tuple Method Examples\ntup = (1, 2, 3, 2, 4, 2, 5)\n\n# Finding the first occurrence of 2\nprint(f\"First '2' is at index: {tup.index(2)}\")\n\n# Counting all occurrences of 2\nprint(f\"Total count of '2': {tup.count(2)}\")",
+        outputCode: "First '2' is at index: 1\nTotal count of '2': 3",
+      },
+    ],
+  },
+  Dict: {
+    id: "Dict",
+    title: "Python Dictionaries",
+    description:
+      "Dictionaries are unordered collections of key-value pairs. They allow for efficient data retrieval based on unique keys, making them ideal for storing related information.",
+    blocks: [
+      {
+        subTitle: "Python Dictionaries",
+        text: "Dictionaries are used to store data collections in key:value pairs. They are highly efficient for looking up information when you have a unique identifier (the key).",
+        list: [
+          "Structure: Data is stored as key:value pairs enclosed in curly braces {}.",
+          "Uniqueness: Keys in a dictionary must be unique to avoid data collisions.",
+          "Mutability: You can change, add, or remove items after the dictionary is created.",
+          "Unordered: Unlike lists, dictionaries do not maintain a specific order for their elements.",
+        ],
+        code: '# Defining a dictionary\ninfo = {\n    "name": "tanushree",\n    "cgpa": 9.2,\n    "subjects": ["math", "science"]\n}\n\nprint(type(info))',
+        outputCode: "<class 'dict'>",
+      },
+      {
+        subTitle: "Accessing & Modifying",
+        text: "Dictionaries allow for direct access to values through their keys. You can also reassign values to existing keys or add new key-value pairs at any time.",
+        list: [
+          'Accessing: Use dict["key_name"] to retrieve the associated value.',
+          'Updating: Assign a new value to an existing key (e.g., info["cgpa"] = 9.6).',
+          "Adding: Creating a new key automatically adds it to the dictionary.",
+          "Heterogeneous: Keys and values can be of various data types, including strings, numbers, and even lists.",
+        ],
+        code: '# Updating a value\ninfo = {"name": "tanushree", "cgpa": 9.2}\ninfo["cgpa"] = 9.6\n\nprint(info["cgpa"])',
+        outputCode: "9.6",
+      },
+      {
+        subTitle: "Dictionary Methods",
+        text: "Built-in dictionary methods allow you to retrieve all keys, all values, or both as pairs. These are essential for iterating through data dynamically.",
+        list: [
+          "keys(): Returns a view object containing all the keys in the dictionary.",
+          "values(): Returns a view object containing all the values.",
+          "items(): Returns all (key, value) pairs as a list of tuples.",
+          "get(key): Retrieves the value for a key; safer than direct indexing as it handles missing keys.",
+          "update(new_dict): Merges another dictionary or iterable of pairs into the current one.",
+        ],
+        code: '# Using dictionary methods\ninfo = {"name": "tanushree", "cgpa": 9.2}\n\n# Getting all keys as a list\nprint(list(info.keys()))\n\n# Getting all values as a list\nprint(list(info.values()))',
+        outputCode: "['name', 'cgpa']\n['tanushree', 9.2]",
+      },
+    ],
+  },
+  Sets: {
+    id: "Sets",
+    title: "Python Sets",
+    description:
+      "Sets are unordered collections of unique items. They are useful for storing distinct values and performing mathematical set operations like union, intersection, and difference.",
+    blocks: [
+      {
+        subTitle: "Python Sets",
+        text: "Sets are collections of unique elements. They are ideal for situations where you need to ensure no duplicate values exist in your dataset, such as a list of unique user IDs.",
+        list: [
+          "Uniqueness: Sets automatically remove any duplicate values.",
+          "Unordered: Elements in a set do not have a fixed position or index.",
+          "Mutable: You can modify the set by adding or removing elements.",
+          "Syntax: Defined using curly braces {} containing values (e.g., {1, 2, 3}).",
+        ],
+        code: "# Defining a set with duplicates\ns = {1, 2, 2, 2, 3}\n\nprint(s)\nprint(len(s))  # Only counts unique elements",
+        outputCode: "{1, 2, 3}\n3",
+      },
+      {
+        subTitle: "Set Methods",
+        text: "Built-in set methods allow you to dynamically manage unique collections. Note that for methods like pop(), the element removed is random because sets are unordered.",
+        list: [
+          "add(val): Adds a new unique element to the set.",
+          "remove(val): Deletes a specific value from the set.",
+          "clear(): Removes every element, leaving the set empty.",
+          "pop(): Removes and returns a random element from the set.",
+        ],
+        code: '# Using set methods\ns = {1, 2, 3}\n\n# Adding an element\ns.add(5)\nprint(f"After add: {s}")\n\n# Removing an element\ns.remove(2)\nprint(f"After remove: {s}")',
+        outputCode: "After add: {1, 2, 3, 5}\nAfter remove: {1, 3, 5}",
+      },
+      {
+        subTitle: "Union & Intersection",
+        text: "Union and Intersection allow you to combine or compare two different sets. These methods return a new set as the result.",
+        list: [
+          "union(set2): Returns a new set containing all unique elements from both sets.",
+          "intersection(set2): Returns a new set containing only the elements common to both sets.",
+        ],
+        code: '# Set math operations\nset1 = {1, 2, 3}\nset2 = {2, 3, 4}\n\nprint(f"Union: {set1.union(set2)}")\nprint(f"Intersection: {set1.intersection(set2)}")',
+        outputCode: "Union: {1, 2, 3, 4}\nIntersection: {2, 3}",
+      },
+    ],
+  },
+  OOPS: {
+    id: "OOPS",
+    title: "Python OOPS (Object-Oriented Programming System)",
+    description:
+      "OOPS is a programming paradigm that uses 'objects' to represent data and methods. It promotes code organization, reusability, and modularity through concepts like classes, inheritance, and encapsulation.",
+    blocks: [
+      {
+        subTitle: "What is OOP?",
+        text: "Object-Oriented Programming (OOP) is a programming paradigm that uses 'classes' and 'objects' to structure software. It evolved from procedural programming to help developers manage complex systems through code reusability.",
+        list: [
+          "Procedural vs OOP: Procedural logic flows through a sequence of functions, while OOP organizes data into logical units.",
+          "Reusability: OOP allows you to write a 'blueprint' once and reuse it to create multiple instances.",
+          "Core Components: The foundation of OOP rests on two primary concepts: Classes and Objects.",
+        ],
+      },
+      {
+        subTitle: "Class & Object",
+        text: "Think of a Class as a structural blueprint and an Object as the actual building constructed from it. Every object is an instance of its class.",
+        list: [
+          "Class: The blueprint that defines the structure and rules (e.g., the 'Student' template).",
+          "Object: A specific instance created from the class (e.g., 'stu1', 'stu2').",
+          "Instantiation: The process of creating an object by calling the class name with parentheses.",
+        ],
+        code: '# Defining a Class\nclass Student:\n    subject = "Python"\n    college = "ABC"\n\n# Creating Objects (Instances)\nstu1 = Student()\nstu2 = Student()\n\nprint(stu1.subject)\nprint(stu2.college)',
+        outputCode: "Python\nABC",
+      },
+      {
+        subTitle: "Attributes & Methods",
+        text: "Every class is defined by what it 'is' (attributes) and what it 'does' (methods). These two elements combined create a complete model of a real-world entity.",
+        list: [
+          "Properties / Attributes: Variables that belong to the class (e.g., name, age, year).",
+          "Behaviors / Methods: Functions defined inside a class that perform actions on the data.",
+          "Encapsulation: Grouping attributes and methods into a single unit (the class) simplifies system management.",
+        ],
+      },
+      {
+        subTitle: "The Constructor (__init__)",
+        text: "All classes have a function called __init__(), which is always executed when the class is being initiated. It acts as a setup phase to prepare the object for use.",
+        list: [
+          "Automatic Execution: The constructor runs immediately upon object creation without being called manually.",
+          "Initialization: It is used to assign values to object properties (attributes).",
+          "The 'self' Parameter: Represents the current instance of the class and is used to access variables belonging to that class.",
+        ],
+        code: '# Basic Constructor Example\nclass Student:\n    def __init__(self):\n        print("System: Object is being constructed..")\n\nstu1 = Student()',
+        outputCode: "System: Object is being constructed..",
+      },
+      {
+        subTitle: "Parameterized Initialization",
+        text: "By adding parameters to the constructor, you can ensure every object starts with its own unique set of data, rather than shared class-level defaults.",
+        list: [
+          "Dynamic Data: Pass arguments like 'name' and 'cgpa' during instantiation.",
+          "Mapping: Use 'self.attribute = parameter' to map incoming data to the object instance.",
+          "Scalability: This allows one blueprint to create hundreds of distinct 'Student' records easily.",
+        ],
+        code: '# Mapping data to instances\nclass Student:\n    def __init__(self, name, cgpa):\n        self.name = name\n        self.cgpa = cgpa\n\n# Creating distinct objects\nstu1 = Student("Rahul", 9.0)\nstu2 = Student("Urvashi", 8.4)\n\nprint(f"{stu1.name} grade: {stu1.cgpa}")',
+        outputCode: "Rahul grade: 9.0",
+      },
+      {
+        subTitle: "Object Methods",
+        text: "Methods represent the 'behaviors' of your objects. They can access and modify the data stored within the object using the 'self' keyword.",
+        list: [
+          "Functionality: Methods define what the object can 'do' (e.g., calculate grades, print reports).",
+          "Access: Methods use 'self' to reference the specific attributes of the object that called them.",
+          "Return Values: Methods can return data back to the main program, as seen in the getter example.",
+        ],
+        code: '# Using Methods to access data\nclass Student:\n    def __init__(self, name, cgpa):\n        self.name = name\n        self.cgpa = cgpa\n\n    def get_cgpa(self):\n        return self.cgpa\n\nstu1 = Student("Rahul", 9.0)\nprint(f"{stu1.name} has cgpa = {stu1.get_cgpa()}")',
+        outputCode: "Rahul has cgpa = 9.0",
+      },
+      {
+        subTitle: "Attributes: Class vs. Instance",
+        text: "Attributes define the data associated with your objects. Understanding the difference between class-level and instance-level attributes is key to memory-efficient coding.",
+        list: [
+          "Class Attributes: Variables defined directly inside the class but outside any methods. They are shared by all objects (e.g., college_name).",
+          "Instance Attributes: Variables defined inside the __init__ method using 'self'. They are unique to each object (e.g., self.name).",
+          "Precedence: If an instance and class share an attribute name, the instance attribute takes precedence for that specific object.",
+        ],
+        code: '# Class and Instance Attribute Example\nclass Student:\n    college_name = "ABC College" # Class attribute (common)\n\n    def __init__(self, name, gpa):\n        self.name = name        # Instance attribute (unique)\n        self.gpa = gpa          # Instance attribute (unique)\n\nstu1 = Student("Rahul", 9.2)\nprint(stu1.name)            # Accessing instance attribute\nprint(Student.college_name) # Accessing class attribute',
+        outputCode: "Rahul\nABC College",
+      },
+      {
+        subTitle: "Attribute Overriding",
+        text: "Python follows a specific search order for attributes. Instance attributes always override class attributes if they share the same name.",
+        list: [
+          "Search Order: Instance Level -> Class Level.",
+          "Overriding: Setting self.PI = 3.14 inside __init__ will override a class-level PI = 3.1 for that specific instance.",
+          "Static Values: Class attributes are ideal for constants or values that never change across the entire dataset.",
+        ],
+        code: "class Student:\n    PI = 3.1 # Class level\n\n    def __init__(self):\n        self.PI = 3.14 # Instance level (overrides class PI)\n\nstu1 = Student()\nprint(stu1.PI)",
+        outputCode: "3.14",
+      },
+      {
+        subTitle: "Instance Methods",
+        text: "Instance methods represent the specific actions an object can take. They are uniquely tied to an instance and use the 'self' keyword to interact with that object's unique data.",
+        list: [
+          "Parameter: Must take 'self' as the first parameter.",
+          "Access: Can access and modify both instance attributes (unique) and class attributes (common).",
+          "Usage: Used for general object behaviors, such as displaying a laptop's specific specs.",
+        ],
+        code: 'class Laptop:\n    def __init__(self, ram, storage):\n        self.ram = ram\n        self.storage = storage\n\n    def get_info(self):\n        print(f"Laptop has {self.ram} RAM & {self.storage} storage")\n\nl1 = Laptop("16gb", "512gb")\nl1.get_info()',
+        outputCode: "Laptop has 16gb RAM & 512gb storage",
+      },
+      {
+        subTitle: "Class Methods",
+        text: "Class methods operate on the class itself. They are often used as 'factory' methods or to modify shared class state that affects every instance.",
+        list: [
+          "Decorator: Must be preceded by @classmethod.",
+          "Parameter: Takes 'cls' as the first compulsory parameter instead of 'self'.",
+          "Capability: Primarily used to access or modify class-level attributes.",
+        ],
+        code: 'class Laptop:\n    storage_type = "SSD"\n\n    @classmethod\n    def get_storage_type(cls):\n        print(f"Storage type = {cls.storage_type}")\n\nLaptop.get_storage_type()',
+        outputCode: "Storage type = SSD",
+      },
+      {
+        subTitle: "Static Methods",
+        text: "Static methods behave like regular functions but are grouped inside a class because they are conceptually related to it. They perform independent tasks, such as mathematical calculations.",
+        list: [
+          "Decorator: Must be preceded by @staticmetod.",
+          "Parameters: No compulsory parameters like 'self' or 'cls'.",
+          "Isolation: Cannot access or modify instance or class attributes.",
+        ],
+        code: 'class Laptop:\n    @staticmethod\n    def calc_discount(price, discount):\n        final_price = price - (discount * price / 100)\n        print(f"Discounted price = {final_price}")\n\nLaptop.calc_discount(40000, 10)',
+        outputCode: "Discounted price = 36000.0",
+      },
+      {
+        subTitle: "Project: Product Store System",
+        text: "This project integrates all three types of Python methods to create a functional inventory system. It demonstrates how to manage unique object data while simultaneously tracking global system metrics.",
+        list: [
+          "Requirement 1: Design a 'Product' class to store unique names and prices.",
+          "Requirement 2: Implement a class attribute to track the total number of products created.",
+          "Requirement 3: Create a static method to calculate discounts based on a percentage (%) parameter.",
+          "Requirement 4: Use an instance method to display the final details for each specific product.",
+        ],
+        code: `class Product:
+    total_products = 0  # Class attribute to track inventory
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        Product.total_products += 1
+
+    @staticmethod
+    def calc_discount(price, discount_percent):
+        return price - (price * discount_percent / 100)
+
+    def display_info(self, discount=0):
+        final_price = self.calc_discount(self.price, discount)
+        print(f"Product: {self.name} | Final Price: {final_price}")
+
+# Creating products
+p1 = Product("Laptop", 50000)
+p2 = Product("Mouse", 1000)
+
+p1.display_info(10) # 10% discount
+print(f"Total Products in Store: {Product.total_products}")`,
+        outputCode:
+          "Product: Laptop | Final Price: 45000.0\nTotal Products in Store: 2",
+      },
+      {
+        subTitle: "Pillar 1: Encapsulation",
+        text: "Encapsulation groups data and behavior together, providing a protective shield that prevents external code from accessing internal details directly.",
+        list: [
+          "Definition: Bundling attributes and methods into a single class unit.",
+          "Data Protection: Helps hide the internal representation of an object.",
+          "Access Control: In Python, you can use private members (starting with '__') to further restrict access.",
+        ],
+        code: "# Encapsulation Example\nclass Account:\n    def __init__(self, balance):\n        self.__balance = balance # Private attribute\n\n    def get_balance(self):\n        return self.__balance\n\nacc = Account(5000)\nprint(acc.get_balance())",
+        outputCode: "5000",
+      },
+      {
+        subTitle: "Access Modifiers",
+        text: "Python uses specific naming conventions to determine how data can be accessed from outside a class. This ensures sensitive data, like account balances, is handled securely.",
+        list: [
+          "Public: Accessible from anywhere (inside and outside the class). Standard naming (e.g., self.name).",
+          "Protected: Intended for use within the class and its subclasses. Defined with a single underscore (e.g., self._balance).",
+          "Private: Accessible only within the defined class. Defined with double underscores (e.g., self.__balance).",
+          "Data Mangling: Python internally renames private variables to prevent accidental access from outside.",
+        ],
+        code: '# Visibility Example\nclass BankAccount:\n    def __init__(self, name, balance):\n        self.name = name          # Public\n        self._branch = "Main"     # Protected\n        self.__balance = balance  # Private\n\nacc = BankAccount("Rahul", 1000)\nprint(acc.name)   # Works\n# print(acc.__balance) # Throws Error',
+        outputCode: "Rahul",
+      },
+      {
+        subTitle: "Getters & Setters",
+        text: "Since private attributes cannot be accessed directly, we use methods to 'get' the current value or 'set' a new value securely.",
+        list: [
+          "Getter: A method used to return the value of a private attribute.",
+          "Setter: A method used to assign a new value to a private attribute.",
+          "Control: Setters allow you to add rules, such as preventing a balance from being set to a negative number.",
+        ],
+        code: 'class BankAccount:\n    def __init__(self, balance):\n        self.__balance = balance\n\n    def get_balance(self): # Getter\n        return self.__balance\n\n    def set_balance(self, newVal): # Setter\n        self.__balance = newVal\n\nacc = BankAccount(100000)\nacc.set_balance(200000)\nprint(f"New Balance: {acc.get_balance()}")',
+        outputCode: "New Balance: 200000",
+      },
+      {
+        subTitle: "Pillar 2: Abstraction",
+        text: "Abstraction simplifies complex systems by providing a clear interface and hiding the 'how it works' behind the scenes.",
+        list: [
+          "Core Concept: Hiding complexity and showing only necessary functionality.",
+          "Focus: Users interact with 'what' an object does, not 'how' it does it.",
+          "Implementation: Often achieved through abstract classes and methods in Python.",
+        ],
+      },
+      {
+        subTitle: "What is Abstraction?",
+        text: "Abstraction simplifies interaction with complex systems. Users interact with a high-level interface (the 'what') without needing to understand the underlying mechanics (the 'how').",
+        list: [
+          "Abstract Class: A blueprint for other classes that prevents direct object creation.",
+          "Abstract Method: A method declared in the parent class but implemented in the child class using the @abstractmethod decorator.",
+          "Implementation: Requires the 'abc' (Abstract Base Classes) module and inheriting from 'ABC'.",
+          "Consistency: Ensures that all child classes (e.g., Lion, Cow) implement specific necessary behaviors like make_sound().",
+        ],
+        code: 'from abc import ABC, abstractmethod\n\n# Abstract Parent Class\nclass Animal(ABC):\n    @abstractmethod\n    def make_sound(self):\n        pass\n\n# Concrete Child Classes\nclass Lion(Animal):\n    def make_sound(self):\n        print("Roar!")\n\nclass Cow(Animal):\n    def make_sound(self):\n        print("Moo!")\n\nlion = Lion()\nlion.make_sound()',
+        outputCode: "Roar!",
+      },
+      {
+        subTitle: "Pillar 3: Inheritance",
+        text: "Inheritance enables a child class to derive features from a parent class, allowing you to build new functionality on top of existing code.",
+        list: [
+          "Reusability: Avoid writing the same code multiple times by inheriting from a base class.",
+          "Hierarchy: Establishes an 'is-a' relationship (e.g., a Car 'is-a' Vehicle).",
+          "Extensibility: Child classes can add their own unique methods or override parent behaviors.",
+        ],
+        code: 'class Vehicle:\n    def start(self):\n        print("Vehicle started")\n\nclass Car(Vehicle): # Inheriting from Vehicle\n    def drive(self):\n        print("Car is driving")\n\nc = Car()\nc.start() # Inherited method\nc.drive()',
+        outputCode: "Vehicle started\nCar is driving",
+      },
+      {
+        subTitle: "What is Inheritance?",
+        text: "Inheritance allows one class to derive properties and behaviors from another class. This 'is-a' relationship (e.g., a Teacher 'is-an' Employee) enables efficient code reuse.",
+        list: [
+          "Parent / Base Class: The existing class whose features are inherited.",
+          "Child / Derived Class: The new class that inherits features and can also add its own.",
+          "Syntax: Defined by passing the parent class name in parentheses: class Child(Parent).",
+          "Reusability: Prevents writing the same logic (like login times) for every sub-category of user.",
+        ],
+        code: '# Parent Class\nclass Employee:\n    start_time = "10am"\n    end_time = "6pm"\n\n# Child Class inheriting from Employee\nclass Teacher(Employee):\n    def __init__(self, subject):\n        self.subject = subject\n\nt1 = Teacher("Math")\nprint(f"Teacher of {t1.subject} starts at {t1.start_time}")',
+        outputCode: "Teacher of Math starts at 10am",
+      },
+      {
+        subTitle: "Inheritance Structures",
+        text: "Depending on how classes are linked, inheritance is categorized into three primary types. Each serves a specific architectural purpose in software design.",
+        list: [
+          "Single Level Inheritance: A single child class inherits from a single parent class.",
+          "Multi-level Inheritance: A derived class acts as a parent for another class, creating a chain (Grandparent -> Parent -> Child).",
+          "Multiple Inheritance: A single child class inherits from more than one parent class simultaneously.",
+        ],
+      },
+      {
+        subTitle: "Pillar 4: Polymorphism",
+        text: "Polymorphism allows a single interface to be used for a general class of actions. The specific action is determined by the exact nature of the object.",
+        list: [
+          "Definition: The ability of an object to take on many forms.",
+          "Method Overriding: Multiple classes defining the same method name (e.g., move()) but with different internal logic.",
+          "Flexibility: Functions can process different types of objects as long as they follow the same interface.",
+        ],
+      },
+      {
+        subTitle: "What is Polymorphism?",
+        text: "Polymorphism allows objects of different classes to respond to the same method call in their own way. This is primarily achieved through Function Overriding and Duck Typing.",
+        list: [
+          "Function Overriding: Redefining a parent class's function within a child class to change its behavior.",
+          "Duck Typing: A concept where an object's suitability is determined by the presence of certain methods rather than its actual type.",
+          "Flexibility: Allows a single interface (like 'get_designation') to work across diverse object types.",
+        ],
+        code: '# Method Overriding Example\nclass Employee:\n    def get_designation(self):\n        print("designation = Employee")\n\nclass Teacher(Employee):\n    def get_designation(self):\n        print("designation = Teacher")\n\nt1 = Teacher()\nt1.get_designation() # Calls the overridden version',
+        outputCode: "designation = Teacher",
+      },
+    ],
+  },
+  FileHandling: {
+    id: "FileHandling",
+    title: "Python File Handling",
+    description:
+      "File handling in Python allows you to read from and write to files on your system. It is essential for data persistence, enabling programs to store information beyond their runtime.",
+    blocks: [
+      {
+        subTitle: "File Handling Basics",
+        text: "File I/O is the process of performing operations on files. Python provides built-in functions to open, manipulate, and close files securely.",
+        list: [
+          "File Types: Common formats include text files (.txt) and data files (.csv).",
+          "Standard Workflow: The typical sequence is: Open -> Operations (Read/Write) -> Close.",
+          "File Object: The open() function creates a 'file object' that acts as a link to the actual file.",
+        ],
+        code: '# Basic read workflow\nf = open("sample.txt", "r")\ndata = f.read()\nprint(data)\nf.close()',
+        outputCode: "Contents of sample.txt appear here...",
+      },
+      {
+        subTitle: "Open, Read & Close",
+        text: "The open() function requires a file name and a mode. If no path is provided, Python looks in the current directory.",
+        list: [
+          "Syntax: f = open('filename', 'mode'). Common modes include 'r' (read), 'w' (write), and 'a' (append).",
+          "read(): Returns the entire content of the file as a single string.",
+          "readline(): Reads one line at a time; useful for processing large files line-by-line.",
+          "Safety: Always use .close() to prevent memory leaks or file corruption.",
+        ],
+        code: '# Reading line by line\nf = open("sample.txt", "r")\nline1 = f.readline()\nprint(f"Line 1: {line1}")\nf.close()',
+      },
+      {
+        subTitle: "Writing & Appending",
+        text: "Use the write() method to send string data to a file. Be cautious: 'w' mode deletes existing content before writing.",
+        list: [
+          "Overwrite Mode ('w'): Deletes current data and starts fresh.",
+          "Append Mode ('a'): Keeps existing data and adds new text to the end.",
+          "Strings Only: The write() method only accepts strings; other data types must be converted.",
+        ],
+        code: '# Overwriting a file\nf = open("sample.txt", "w")\nf.write("Text to overwrite \\n")\nf.close()',
+      },
+      {
+        subTitle: "Detailed File Modes",
+        text: "Modes define the permissions and the initial position of the file pointer. Understanding these is critical for tasks like updating existing logs without overwriting them.",
+        list: [
+          "r: Read-only (default); file must exist.",
+          "w: Write-only; creates a new file or truncates an existing one.",
+          "a: Append; adds data to the end of the file without deleting current content.",
+          "r+: Read and Write; pointer starts at the beginning.",
+          "w+: Read and Write; truncates the file first.",
+          "b: Binary mode (e.g., 'rb' or 'wb') for non-text files like images.",
+        ],
+      },
+      {
+        subTitle: "The 'with' Statement",
+        text: "Using 'with' creates a context manager that handles resource cleanup automatically, making your code cleaner and safer.",
+        list: [
+          "Automatic Cleanup: You no longer need to call f.close() manually.",
+          "Syntax: with open('file', 'mode') as f:.",
+          "Scope: The file remains open only inside the indented block.",
+        ],
+        code: '# Modern file handling\nwith open("data.txt", "r") as f:\n    data = f.read()\n    print(data)\n\n# File is now closed automatically',
+      },
+      {
+        subTitle: "Deleting Files",
+        text: "To delete a file from the disk, you must import Python's built-in 'os' module and use its remove function.",
+        list: [
+          "Module: import os.",
+          "Method: os.remove('filename') deletes the specified file permanently.",
+          "Caution: This operation is irreversible; always verify the file path before execution.",
+        ],
+        code: 'import os\n\n# Permanently delete a file\nos.remove("sample.txt")',
+      },
+      {
+        subTitle: "Resilient Error Handling",
+        text: "By using try-except blocks, you can intercept errors and provide graceful fallback logic, maintaining a smooth user experience even when operations fail.",
+        list: [
+          "try: Contains the code that might cause an error.",
+          "except: Executes only if an exception occurs in the try block (e.g., ZeroDivisionError).",
+          "else: Runs only if no exceptions were raised in the try block.",
+          "finally: Code that always executes regardless of whether an error occurred, ideal for cleanup tasks.",
+        ],
+        code: 'try:\n    num = int(input("Enter divisor: "))\n    res = 100 / num\nexcept ZeroDivisionError:\n    print("Error: Cannot divide by zero!")\nelse:\n    print(f"Result is {res}")',
+        outputCode: "Enter divisor: 0\nError: Cannot divide by zero!",
+      },
+      {
+        subTitle: "Concise List Logic",
+        text: "List comprehensions combine the creation and population of a list into one expression, improving both performance and code readability.",
+        list: [
+          "Syntax: [output for item in iterable if condition].",
+          "Filtering: You can include an optional 'if' statement to only include items that meet a criteria.",
+          "Transformation: Apply operations directly to the output item (e.g., [x*x for x in nums]).",
+        ],
+        code: "nums = [1, 2, 3, 4, 5]\n# Create a list of squares for even numbers only\neven_squares = [x**2 for x in nums if x % 2 == 0]\nprint(even_squares)",
+        outputCode: "[4, 16]",
+      },
+      {
+        subTitle: "JSON Module",
+        text: "Python's built-in 'json' module allows you to easily convert between Python objects (dictionaries/lists) and JSON strings used by web APIs.",
+        list: [
+          "Format: Uses a key:value structure similar to Python dictionaries.",
+          "loads(): Parses a JSON string and converts it into a Python object (dictionary).",
+          "dumps(): Takes a Python object and 'serializes' it into a JSON string.",
+          "Persistence: Use load() and dump() to work directly with .json files on your disk.",
+        ],
+        code: 'import json\n\n# Python Dictionary\ndata = {"name": "tanushree", "subjects": ["Python", "DataScience"]}\n\n# Convert to JSON string\njson_str = json.dumps(data)\nprint(f"String type: {type(json_str)}")',
+        outputCode: "String type: <class 'str'>",
+      },
+    ],
+  },
   Questions: {
     id: "Questions",
     title: "Python Operators - Practice Questions",
@@ -574,6 +1245,258 @@ export const pythonContent: Record<string, TopicContent> = {
         code: '# Guessing Game Logic\nsecret = 18\nprint("--- Welcome to the Guessing Game! ---")\n\nwhile True:\n    guess = int(input("Guess the number: "))\n    if guess == secret:\n        print("Correct! You won.")\n        break\n    elif guess > secret:\n        print("Too high! Try again.")\n    else:\n        print("Too low! Try again.")',
         outputCode:
           "Guess the number: 25\nToo high! Try again.\nGuess the number: 18\nCorrect! You won.",
+      },
+      {
+        subTitle: "Exercise: Data Filtering with Sets",
+        text: "Given a list of student enrolment tuples in the format (name, subject), use Python sets to extract unique values and perform efficient data lookups.",
+        list: [
+          "Unique Courses: Use a set to automatically filter out duplicate subjects from the enrolment list.",
+          "Targeted Filtering: Iterate through tuples to find all students enrolled in a specific subject like 'English'.",
+          "Data Mapping: Combine dictionaries and sets to map students to their unique set of courses.",
+          "Efficiency: Sets provide O(1) average time complexity for membership checks, making them faster than lists for large enrolment databases.",
+        ],
+        code: `# List of (student, subject) tuples\nenrolments = [\n    ("Alice", "Math"), ("Bob", "English"), \n    ("Alice", "Physics"), ("Charlie", "English")\n]\n\n# 1. List all unique courses\nunique_courses = set()\nfor name, subject in enrolments:\n    unique_courses.add(subject)\n\nprint(f"Unique Courses: {unique_courses}")\n\n# 2. List students in English\nenglish_students = [name for name, sub in enrolments if sub == "English"]\nprint(f"English Students: {english_students}")`,
+        outputCode:
+          "Unique Courses: {'Physics', 'Math', 'English'}\nEnglish Students: ['Bob', 'Charlie']",
+      },
+      {
+        subTitle: "Lab: Data Structure Challenges",
+        text: "These exercises require you to apply multiple concepts simultaneously, such as using loops to process strings or merging and sorting collections of data.",
+        list: [
+          "Q1. Palindrome Checker: A palindrome reads the same forward and backward (e.g., 'madam'). Hint: Use a loop or slicing [::-1] to reverse the string.",
+          "Q2. List Averaging: Given a list of integers, compute the mathematical average of all numbers present.",
+          "Q3. List Merging: Input two lists, merge them into one, and perform a final sort to organize the results.",
+          "Q4. Tuple Filtering: Given a master tuple of integers, create two separate tuples: one containing only even numbers and one for odd numbers.",
+        ],
+        code: `# Q3: Merge and Sort Example
+list1 = [1, 2, 7]
+list2 = [2, 4, 5]
+result = list1 + list2
+result.sort()
+print(f"Merged & Sorted: {result}")
+
+# Q4: Tuple Filtering Logic
+master = (1, 2, 3, 4, 5, 6)
+evens = tuple(x for x in master if x % 2 == 0)
+odds = tuple(x for x in master if x % 2 != 0)
+print(f"Evens: {evens} | Odds: {odds}")`,
+        outputCode:
+          "Merged & Sorted: [1, 2, 2, 4, 5, 7]\nEvens: (2, 4, 6) | Odds: (1, 3, 5)",
+      },
+      {
+        subTitle: "Exercise 6: Word Length Mapping",
+        text: "Given a list of words, create a dictionary that maps each word to its character length. This is a common pattern for data preprocessing in software systems.",
+        list: [
+          "Input: A list of strings (e.g., ['apple', 'banana']).",
+          "Mapping Logic: Iterate through the list and use the word as the key and len(word) as the value.",
+          "Utility: This technique allows for O(1) lookup of item properties once the map is built.",
+        ],
+        code: `# Word to Length Mapping\nwords = ["apple", "banana", "kiwi", "cherry", "mango"]\nword_map = {}\n\nfor word in words:\n    word_map[word] = len(word)\n\nprint(word_map)`,
+        outputCode:
+          "{'apple': 5, 'banana': 6, 'kiwi': 4, 'cherry': 6, 'mango': 5}",
+      },
+      {
+        subTitle: "Exercise 7: Space Counter",
+        text: "WAP to count the total number of spaces in a given string. This exercise practices character-by-character string analysis.",
+        list: [
+          "Logic: Initialize a counter at 0.",
+          "Condition: Use an 'if' statement to check if the current character is equal to a literal space \" \".",
+          "Iteration: Loop through the entire string using the 'for char in string' syntax.",
+        ],
+        code: `# Counting spaces in a string\ntext = "The Tech Lab Python Curriculum"\nspace_count = 0\n\nfor char in text:\n    if char == " ":\n        space_count += 1\n\nprint(f"Total spaces found: {space_count}")`,
+        outputCode: "Total spaces found: 4",
+      },
+      {
+        subTitle: "Exercise 8: Disjoint Set Check",
+        text: "WAP to check if two lists share any common elements. Using Sets makes this check highly efficient compared to nested loops.",
+        list: [
+          "Hint: Convert both lists to sets first.",
+          "Operation: Use the intersection() method to find shared elements.",
+          "Logic: If the length of the intersection is 0, the lists share no common elements.",
+        ],
+        code: `# Checking for common elements\nlist1 = [1, 2, 3, 4]\nlist2 = [5, 6, 7, 8]\n\n# Convert to sets for comparison\nset1, set2 = set(list1), set(list2)\ncommon = set1.intersection(set2)\n\nif len(common) == 0:\n    print("No common elements found.")\nelse:\n    print(f"Shared elements: {common}")`,
+        outputCode: "No common elements found.",
+      },
+      {
+        subTitle: "Exercise 9: Duplicate Detection",
+        text: "Given a list, print all elements that appear more than once. This utilizes two sets: one to track seen items and one to store duplicates.",
+        list: [
+          "Logic: Iterate through the list and check if an item has already been added to a 'seen' set.",
+          "Discovery: If it has been seen, add it to a 'duplicates' set.",
+          "Efficiency: This approach identifies duplicates in a single pass through the data.",
+        ],
+        code: `# Identifying duplicates using sets\nnums = [1, 2, 3, 1, 2, 4, 5, 2]\nseen = set()\nduplicates = set()\n\nfor n in nums:\n    if n in seen:\n        duplicates.add(n)\n    seen.add(n)\n\nprint(f"Duplicates found: {list(duplicates)}")`,
+        outputCode: "Duplicates found: [1, 2]",
+      },
+      {
+        subTitle: "Exercise 10: Unique Character Analysis",
+        text: "WAP that takes a string from the user and identifies all unique characters present within it, along with the total count of those unique items.",
+        list: [
+          "Goal: Filter out all duplicate characters from a user-provided string.",
+          "Set Conversion: By converting a string to a set, Python automatically eliminates all repeating characters.",
+          "Unique Count: Use the len() function on the resulting set to find the total number of distinct characters.",
+          "Practicality: This is a fundamental technique for data cleaning and text analysis in software systems.",
+        ],
+        code: `# Unique character extraction\ntext = input("Enter a string: ") # e.g., 'hello'\nunique_chars = set(text)\n\nprint(f"All unique characters: {unique_chars}")\nprint(f"Count of unique characters: {len(unique_chars)}")`,
+        outputCode:
+          "Enter a string: hello\nAll unique characters: {'h', 'e', 'l', 'o'}\nCount of unique characters: 4",
+      },
+
+      {
+        subTitle: "Q1: Palindrome Checker",
+        text: "A palindrome is a string which is the same when read forward and backward (e.g., 'madam', 'racecar').",
+        list: [
+          "Logic: Compare the original string with its reversed version.",
+          "Slicing Method: Use word[::-1] to quickly reverse the string in Python.",
+          "Loop Method: Alternatively, use a loop to reverse the string manually.",
+        ],
+        code: 'word = input("Enter a word: ")\nif(word == word[::-1]):\n    print("It is a palindrome")\nelse:\n    print("Not a palindrome")',
+        outputCode: "Enter a word: madam\nIt is a palindrome",
+      },
+      {
+        subTitle: "Q2 & Q3: List Operations",
+        text: "Mastering list aggregation and merging is essential for processing bulk data effectively.",
+        list: [
+          "Average Calculation: Compute the sum of all integers and divide by the total count.",
+          "Merging: Join two lists of integers provided by the user into one.",
+          "Sorting: Use the .sort() method to organize the merged list in ascending order.",
+        ],
+        code: "# Q3 Example: Merge and Sort\nlist1 = [1, 2, 7]\nlist2 = [2, 4, 5]\nresult = list1 + list2\nresult.sort()\nprint(result)",
+        outputCode: "[1, 2, 2, 4, 5, 7]",
+      },
+      {
+        subTitle: "Data Filtering & Sets",
+        text: "Efficient data filtering and set operations are crucial for handling collections of data with specific criteria.",
+        list: [
+          "Tuple Filtering (Q4): Separate a master tuple into distinct tuples for even and odd numbers.",
+          "Space Counting (Q7): Iterate through a string to count the total number of spaces.",
+          "Disjoint Check (Q8): Use sets to efficiently check if two lists share any common elements.",
+          "Duplicate Detection (Q9): Use sets to identify and print all elements that appear more than once.",
+        ],
+        code: '# Q8: Checking for shared elements\nset1 = {1, 2, 3}\nset2 = {3, 4, 5}\ncommon = set1.intersection(set2)\nprint(f"Common elements: {common}")',
+        outputCode: "Common elements: {3}",
+      },
+      {
+        subTitle: "Dictionary & Set Analysis",
+        text: "Dictionaries and sets are powerful tools for organizing and analyzing data efficiently.",
+        list: [
+          "Menu-based Mapping (Q5): Create a student dictionary supporting Add, Update, Search, and Display operations.",
+          "Length Mapping (Q6): Transform a list of words into a dictionary mapping words to their character lengths.",
+          "Unique Character Analysis (Q10): Use a set to identify all unique characters in a string and their count.",
+        ],
+        code: '# Q6: Word Length Map\nwords = ["apple", "banana"]\nword_map = {word: len(word) for word in words}\nprint(word_map)',
+        outputCode: "{'apple': 5, 'banana': 6}",
+      },
+      {
+        subTitle: "OOP: Objects & Behaviors",
+        text: "Object-Oriented Programming (OOP) models real-world entities using classes and objects, encapsulating data and behaviors together.",
+        list: [
+          "BankAccount (Q1): Implement a class with account_number, owner_name, and balance.",
+          "Methods: Add logic for deposit(), withdraw(), and check_balance().",
+          "Book Class (Q2): Manage books with review lists and methods to add or count reviews.",
+        ],
+        code: "class BankAccount:\n    def __init__(self, acc_no, owner, bal):\n        self.acc_no = acc_no\n        self.owner = owner\n        self.balance = bal\n\n    def deposit(self, amount):\n        self.balance += amount\n        return self.balance",
+      },
+      {
+        subTitle: "Encapsulation & Validation",
+        text: "Use private attributes (starting with an underscore) to protect data from direct external modification.",
+        list: [
+          "Private Members: Implement _name, _roll_no, and _marks.",
+          "Getters/Setters: Create methods to retrieve and update private data safely.",
+          "Validation Logic: Ensure marks are 1-100 and roll numbers are positive.",
+        ],
+        code: "class Student:\n    def __init__(self, name, marks):\n        self._name = name\n        self.set_marks(marks)\n\n    def set_marks(self, val):\n        if 1 <= val <= 100: self._marks = val",
+      },
+      {
+        subTitle: "Inheritance & Abstract Classes",
+        text: "Leverage inheritance to create specialized classes from a common base, enforcing method implementation through abstraction.",
+        list: [
+          "Vehicle Hierarchy (Q5): Create a base Vehicle class with specific Car and Bike subclasses.",
+          "Abstract Requirements (Q6): Define an abstract Employee class with a calculate_salary() method.",
+          "Mandatory Overriding: Ensure Intern, FullTime, and Contract subclasses implement their own salary logic.",
+        ],
+      },
+      {
+        subTitle: "Polymorphism & Constructors",
+        text: "Polymorphism allows methods to behave differently based on the object calling them, while constructor overloading can be simulated using default parameters.",
+        list: [
+          "Shape Overriding (Q4): Override the area() method for Circle, Rectangle, and Triangle subclasses.",
+          "Default Parameters (Q7): Use default values to simulate constructor overloading for Person(name, age, address).",
+          "Logic: Handle cases where only a name is provided versus full contact details.",
+        ],
+      },
+      {
+        subTitle: "Multiple Inheritance",
+        text: "Model complex biological or organizational relationships where a child class combines features from several parents.",
+        list: [
+          "Base Classes: Define Herbivore, Carnivore, and Omnivore with unique behaviors.",
+          "Derived Class: Create a Bear class that inherits from all three to showcase multiple inheritance.",
+          "Method Resolution: Observe how Python handles attributes shared between parent classes.",
+        ],
+      },
+      {
+        subTitle: "Project: OOP Chat System",
+        text: "Design a simple chat application using OOP principles to manage users, messages, and chatrooms.",
+        list: [
+          "Class Model: Implement User, Message, and ChatRoom classes.",
+          "Messaging Logic: Handle the sending of messages and viewing chat history.",
+          "Room Management: Implement functions for users joining and leaving the chatroom.",
+        ],
+      },
+      {
+        subTitle: "Lab: Persistent Storage",
+        text: "Learn to handle file streams for creating logs and storing user-generated content. These solutions emphasize proper opening modes for writing ('w') and appending ('a').",
+        list: [
+          "Q1. Name Storage: Create a program that writes five user-entered names into 'names.txt' and reads them back.",
+          "Q2. Logger: Implement an append-only log file ('log.txt') that adds success messages without deleting previous entries.",
+          "Resource Management: Using the 'with' keyword ensures files are closed safely after each operation.",
+        ],
+        code: `# Q1 Solution: Write and Read names
+with open("names.txt", "w") as f:
+    for i in range(5):
+        name = input(f"Enter name {i+1}: ")
+        f.write(name + "\\n")
+
+with open("names.txt", "r") as f:
+    print("\\nStored Names:\\n" + f.read())`,
+        outputCode: "Enter name 1: Rahul\\n...\\nStored Names:\\nRahul\\n...",
+      },
+      {
+        subTitle: "Lab: Data Processing",
+        text: "Master the conversion of complex Python objects into JSON format for web APIs and use list comprehensions for high-performance data filtering.",
+        list: [
+          "Q3. Filtering Logic: Use list comprehension to filter a dataset, keeping only numbers greater than 15.",
+          "Q4. JSON Interchange: Create, save, and update a 'cities.json' file using the json.dump() and json.load() methods.",
+          "Serialization: dumps() converts a dictionary to a string, while loads() reverses the process.",
+        ],
+        code: `# Q3 Solution: Filter numbers > 15
+nums = [5, 10, 15, 20, 25]
+filtered = [x for x in nums if x > 15]
+print(f"Filtered List: {filtered}")
+
+# Q4 Solution: Save City Data
+import json
+cities = {"Delhi": 32000000, "Mumbai": 21000000}
+with open("cities.json", "w") as f:
+    json.dump(cities, f)`,
+        outputCode: "Filtered List: [20, 25]",
+      },
+      {
+        subTitle: "Lab: Defensive Programming",
+        text: "Programs often fail when external resources (like files) are missing. Use try-except blocks to handle these 'edge cases' gracefully.",
+        list: [
+          "Q5. File Guard: Write a script that attempts to open a missing file and catches the FileNotFoundError.",
+          "The Try Block: Wrap the risky open() call inside a try block.",
+          "The Except Block: Provide a user-friendly 'File not found!' message instead of a technical crash log.",
+        ],
+        code: `# Q5 Solution: Catch Missing File Error
+try:
+    with open("data.txt", "r") as f:
+        print(f.read())
+except FileNotFoundError:
+    print("Error: 'data.txt' not found! Please create the file first.")`,
+        outputCode:
+          "Error: 'data.txt' not found! Please create the file first.",
       },
     ],
   },
