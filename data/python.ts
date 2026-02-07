@@ -629,17 +629,17 @@ print(f"After clear: {s}")`,
     description:
       "Object-Oriented Programming (OOP) is a programming paradigm that uses 'classes' and 'objects' to structure software. It evolved from procedural programming to help developers manage complex systems through code reusability.",
     blocks: [
-{
-  subTitle: "What is OOP?",
-  text: "Object-Oriented Programming shifts the focus from writing a sequence of steps to designing a modular system of reusable blueprints.",
-  list: [
-    "Procedural vs OOP: Procedural logic flows through a sequence of functions, while OOP organizes data and behavior into logical units.",
-    "Reusability: OOP allows you to write a 'blueprint' once and reuse it to create multiple instances, saving time and reducing errors.",
-    "Core Components: The foundation of OOP rests on two primary concepts: Classes (the blueprint) and Objects (the actual instance).",
-  ],
-  code: "# Basic OOP Structure\nclass Student:\n    # The Blueprint\n    college = \"Indian Aviation Academy\"\n\n# Creating an Instance (Object)\ns1 = Student()\nprint(s1.college)",
-  outputCode: "Indian Aviation Academy",
-},
+      {
+        subTitle: "What is OOP?",
+        text: "Object-Oriented Programming shifts the focus from writing a sequence of steps to designing a modular system of reusable blueprints.",
+        list: [
+          "Procedural vs OOP: Procedural logic flows through a sequence of functions, while OOP organizes data and behavior into logical units.",
+          "Reusability: OOP allows you to write a 'blueprint' once and reuse it to create multiple instances, saving time and reducing errors.",
+          "Core Components: The foundation of OOP rests on two primary concepts: Classes (the blueprint) and Objects (the actual instance).",
+        ],
+        code: '# Basic OOP Structure\nclass Student:\n    # The Blueprint\n    college = "Indian Aviation Academy"\n\n# Creating an Instance (Object)\ns1 = Student()\nprint(s1.college)',
+        outputCode: "Indian Aviation Academy",
+      },
       {
         subTitle: "Class & Object",
         text: "Think of a Class as a structural blueprint and an Object as the actual building constructed from it. Every object is an instance of its class.",
@@ -651,15 +651,15 @@ print(f"After clear: {s}")`,
         code: '# Defining a Class\nclass Student:\n    subject = "Python"\n    college = "ABC"\n\n# Creating Objects (Instances)\nstu1 = Student()\nstu2 = Student()\n\nprint(stu1.subject)\nprint(stu2.college)',
         outputCode: "Python\nABC",
       },
-{
-  subTitle: "Attributes & Methods",
-  text: "Attributes represent the data or state of an object, while Methods represent the actions or behaviors that the object can perform.",
-  list: [
-    "Properties / Attributes: Variables that belong to the class, such as 'name', 'age', or 'model'.",
-    "Behaviors / Methods: Functions defined inside a class that perform actions or manipulate the object's data.",
-    "Encapsulation: Grouping attributes and methods into a single unit (the class) simplifies system management and data security.",
-  ],
-  code: `# Modeling a simple Object with Data and Action
+      {
+        subTitle: "Attributes & Methods",
+        text: "Attributes represent the data or state of an object, while Methods represent the actions or behaviors that the object can perform.",
+        list: [
+          "Properties / Attributes: Variables that belong to the class, such as 'name', 'age', or 'model'.",
+          "Behaviors / Methods: Functions defined inside a class that perform actions or manipulate the object's data.",
+          "Encapsulation: Grouping attributes and methods into a single unit (the class) simplifies system management and data security.",
+        ],
+        code: `# Modeling a simple Object with Data and Action
 class Aircraft:
     # Attributes (Data)
     model = "Boeing 737"
@@ -678,8 +678,9 @@ print(f"Current Status: {my_plane.status}")
 
 # Calling Method
 my_plane.takeoff()`,
-  outputCode: "Current Status: Grounded\nThe Boeing 737 is now In Flight.",
-},
+        outputCode:
+          "Current Status: Grounded\nThe Boeing 737 is now In Flight.",
+      },
       {
         subTitle: "The Constructor (__init__)",
         text: "All classes have a function called __init__(), which is always executed when the class is being initiated. It acts as a setup phase to prepare the object for use.",
@@ -768,146 +769,107 @@ my_plane.takeoff()`,
         code: 'class Laptop:\n    @staticmethod\n    def calc_discount(price, discount):\n        final_price = price - (discount * price / 100)\n        print(f"Discounted price = {final_price}")\n\nLaptop.calc_discount(40000, 10)',
         outputCode: "Discounted price = 36000.0",
       },
-      {
-        subTitle: "Project: Product Store System",
-        text: "This project integrates all three types of Python methods to create a functional inventory system. It demonstrates how to manage unique object data while simultaneously tracking global system metrics.",
-        list: [
-          "Requirement 1: Design a 'Product' class to store unique names and prices.",
-          "Requirement 2: Implement a class attribute to track the total number of products created.",
-          "Requirement 3: Create a static method to calculate discounts based on a percentage (%) parameter.",
-          "Requirement 4: Use an instance method to display the final details for each specific product.",
-        ],
-        code: `class Product:
-    total_products = 0  # Class attribute to track inventory
 
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-        Product.total_products += 1
-
-    @staticmethod
-    def calc_discount(price, discount_percent):
-        return price - (price * discount_percent / 100)
-
-    def display_info(self, discount=0):
-        final_price = self.calc_discount(self.price, discount)
-        print(f"Product: {self.name} | Final Price: {final_price}")
-
-# Creating products
-p1 = Product("Laptop", 50000)
-p2 = Product("Mouse", 1000)
-
-p1.display_info(10) # 10% discount
-print(f"Total Products in Store: {Product.total_products}")`,
-        outputCode:
-          "Product: Laptop | Final Price: 45000.0\nTotal Products in Store: 2",
-      },
       {
         subTitle: "Pillar 1: Encapsulation",
-        text: "Encapsulation groups data and behavior together, providing a protective shield that prevents external code from accessing internal details directly.",
+        text: "Encapsulation ensures that an object's internal state is kept private and can only be changed through controlled interfaces.",
         list: [
           "Definition: Bundling attributes and methods into a single class unit.",
-          "Data Protection: Helps hide the internal representation of an object.",
-          "Access Control: In Python, you can use private members (starting with '__') to further restrict access.",
+          "Data Protection: Hides the internal representation of an object from the outside world.",
+          "Access Control: Uses private members (starting with '__') to restrict direct external modification.",
         ],
-        code: "# Encapsulation Example\nclass Account:\n    def __init__(self, balance):\n        self.__balance = balance # Private attribute\n\n    def get_balance(self):\n        return self.__balance\n\nacc = Account(5000)\nprint(acc.get_balance())",
-        outputCode: "5000",
+        code: "# Encapsulation in Action\nclass Account:\n    def __init__(self, balance):\n        self.__balance = balance # Private attribute\n\n    def get_balance(self):\n        return self.__balance\n\nacc = Account(5000)\nprint(f'Secure Access: {acc.get_balance()}')",
+        outputCode: "Secure Access: 5000",
       },
       {
         subTitle: "Access Modifiers",
-        text: "Python uses specific naming conventions to determine how data can be accessed from outside a class. This ensures sensitive data, like account balances, is handled securely.",
+        text: "Python uses specific naming conventions to determine how data can be accessed. This is crucial for handling sensitive data like account balances or student marks securely.",
         list: [
-          "Public: Accessible from anywhere (inside and outside the class). Standard naming (e.g., self.name).",
-          "Protected: Intended for use within the class and its subclasses. Defined with a single underscore (e.g., self._balance).",
-          "Private: Accessible only within the defined class. Defined with double underscores (e.g., self.__balance).",
-          "Data Mangling: Python internally renames private variables to prevent accidental access from outside.",
+          "Public: Accessible from anywhere; named standardly (e.g., self.name).",
+          "Protected: Intended for use within the class and its subclasses; defined with a single underscore (e.g., self._branch).",
+          "Private: Accessible only within the defined class; defined with double underscores (e.g., self.__balance).",
+          "Data Mangling: Python internally renames '__var' to '_ClassName__var' to prevent accidental external access.",
         ],
-        code: '# Visibility Example\nclass BankAccount:\n    def __init__(self, name, balance):\n        self.name = name          # Public\n        self._branch = "Main"     # Protected\n        self.__balance = balance  # Private\n\nacc = BankAccount("Rahul", 1000)\nprint(acc.name)   # Works\n# print(acc.__balance) # Throws Error',
+        code: '# Visibility Demo\nclass BankAccount:\n    def __init__(self, name, balance):\n        self.name = name          # Public\n        self._branch = "Main"     # Protected\n        self.__balance = balance  # Private\n\nacc = BankAccount("Rahul", 1000)\nprint(acc.name)   # Works: Public\n# print(acc.__balance) # Throws AttributeError: Private',
         outputCode: "Rahul",
       },
       {
         subTitle: "Getters & Setters",
-        text: "Since private attributes cannot be accessed directly, we use methods to 'get' the current value or 'set' a new value securely.",
+        text: "Because private attributes are hidden, we use Getters to retrieve values and Setters to update them safely. This allows us to add validation logic to prevent invalid data.",
         list: [
-          "Getter: A method used to return the value of a private attribute.",
-          "Setter: A method used to assign a new value to a private attribute.",
-          "Control: Setters allow you to add rules, such as preventing a balance from being set to a negative number.",
+          "Getter: A method used to safely return a private attribute's value.",
+          "Setter: A method used to assign a new value to a private attribute after validation.",
+          "Data Integrity: Setters can reject invalid inputs, such as negative balances or empty names.",
         ],
-        code: 'class BankAccount:\n    def __init__(self, balance):\n        self.__balance = balance\n\n    def get_balance(self): # Getter\n        return self.__balance\n\n    def set_balance(self, newVal): # Setter\n        self.__balance = newVal\n\nacc = BankAccount(100000)\nacc.set_balance(200000)\nprint(f"New Balance: {acc.get_balance()}")',
+        code: 'class BankAccount:\n    def __init__(self, balance):\n        self.__balance = balance\n\n    def get_balance(self): # Getter\n        return self.__balance\n\n    def set_balance(self, newVal): # Setter with validation\n        if newVal > 0:\n            self.__balance = newVal\n        else:\n            print("Error: Balance must be positive!")\n\nacc = BankAccount(100000)\nacc.set_balance(200000)\nprint(f"New Balance: {acc.get_balance()}")',
         outputCode: "New Balance: 200000",
       },
       {
         subTitle: "Pillar 2: Abstraction",
-        text: "Abstraction simplifies complex systems by providing a clear interface and hiding the 'how it works' behind the scenes.",
+        text: "Abstraction simplifies interaction with complex systems by providing a clear, high-level interface while concealing the underlying mechanics.",
         list: [
-          "Core Concept: Hiding complexity and showing only necessary functionality.",
-          "Focus: Users interact with 'what' an object does, not 'how' it does it.",
-          "Implementation: Often achieved through abstract classes and methods in Python.",
+          "Core Concept: Hiding complexity to show only the necessary functionality to the user.",
+          "Strategic Focus: Users interact with the 'what' (interface), while developers manage the 'how' (implementation).",
+          "Implementation: Python achieves this through Abstract Base Classes (ABC) and abstract methods.",
         ],
       },
       {
-        subTitle: "What is Abstraction?",
-        text: "Abstraction simplifies interaction with complex systems. Users interact with a high-level interface (the 'what') without needing to understand the underlying mechanics (the 'how').",
+        subTitle: "Working with Abstract Classes",
+        text: "An abstract class serves as a strict blueprint that defines mandatory behaviors for all its subclasses but cannot be used to create objects itself.",
         list: [
-          "Abstract Class: A blueprint for other classes that prevents direct object creation.",
-          "Abstract Method: A method declared in the parent class but implemented in the child class using the @abstractmethod decorator.",
-          "Implementation: Requires the 'abc' (Abstract Base Classes) module and inheriting from 'ABC'.",
-          "Consistency: Ensures that all child classes (e.g., Lion, Cow) implement specific necessary behaviors like make_sound().",
+          "Abstract Class: A restricted blueprint that prevents direct object creation (instantiation).",
+          "Abstract Method: A method declared in the parent but implemented in the child using the @abstractmethod decorator.",
+          "The 'abc' Module: Python requires importing 'ABC' and 'abstractmethod' to enforce these rules.",
+          "Consistency: Ensures every derived class (e.g., Car, Bike) implements specific required methods like start_engine().",
         ],
-        code: 'from abc import ABC, abstractmethod\n\n# Abstract Parent Class\nclass Animal(ABC):\n    @abstractmethod\n    def make_sound(self):\n        pass\n\n# Concrete Child Classes\nclass Lion(Animal):\n    def make_sound(self):\n        print("Roar!")\n\nclass Cow(Animal):\n    def make_sound(self):\n        print("Moo!")\n\nlion = Lion()\nlion.make_sound()',
-        outputCode: "Roar!",
+        code: 'from abc import ABC, abstractmethod\n\n# Abstract Parent Class\nclass Vehicle(ABC):\n    @abstractmethod\n    def start_engine(self):\n        pass\n\n# Concrete Child Classes\nclass Car(Vehicle):\n    def start_engine(self):\n        print("Car engine started with a key.")\n\nclass Bike(Vehicle):\n    def start_engine(self):\n        print("Bike engine started with a kick.")\n\n# my_vehicle = Vehicle() # This would throw an error\nc = Car()\nc.start_engine()',
+        outputCode: "Car engine started with a key.",
       },
       {
         subTitle: "Pillar 3: Inheritance",
-        text: "Inheritance enables a child class to derive features from a parent class, allowing you to build new functionality on top of existing code.",
+        text: "Inheritance allows one class to inherit properties and behaviors from another, establishing a clear hierarchy and promoting efficient code reuse.",
         list: [
-          "Reusability: Avoid writing the same code multiple times by inheriting from a base class.",
-          "Hierarchy: Establishes an 'is-a' relationship (e.g., a Car 'is-a' Vehicle).",
-          "Extensibility: Child classes can add their own unique methods or override parent behaviors.",
-        ],
-        code: 'class Vehicle:\n    def start(self):\n        print("Vehicle started")\n\nclass Car(Vehicle): # Inheriting from Vehicle\n    def drive(self):\n        print("Car is driving")\n\nc = Car()\nc.start() # Inherited method\nc.drive()',
-        outputCode: "Vehicle started\nCar is driving",
-      },
-      {
-        subTitle: "What is Inheritance?",
-        text: "Inheritance allows one class to derive properties and behaviors from another class. This 'is-a' relationship (e.g., a Teacher 'is-an' Employee) enables efficient code reuse.",
-        list: [
-          "Parent / Base Class: The existing class whose features are inherited.",
-          "Child / Derived Class: The new class that inherits features and can also add its own.",
-          "Syntax: Defined by passing the parent class name in parentheses: class Child(Parent).",
           "Reusability: Prevents writing the same logic (like login times) for every sub-category of user.",
+          "Parent / Base Class: The existing class whose features are shared with others.",
+          "Child / Derived Class: The new class that inherits features and adds its own specialized functionality.",
+          "Extensibility: Child classes can add unique methods or modify existing parent behaviors.",
+          "Syntax: Implementation is done by passing the parent class name in parentheses: class Child(Parent).",
         ],
-        code: '# Parent Class\nclass Employee:\n    start_time = "10am"\n    end_time = "6pm"\n\n# Child Class inheriting from Employee\nclass Teacher(Employee):\n    def __init__(self, subject):\n        self.subject = subject\n\nt1 = Teacher("Math")\nprint(f"Teacher of {t1.subject} starts at {t1.start_time}")',
-        outputCode: "Teacher of Math starts at 10am",
+        code: '# Parent Class\nclass Employee:\n    start_time = "10am"\n    end_time = "6pm"\n\n# Child Class inheriting from Employee\nclass Teacher(Employee):\n    def __init__(self, subject):\n        self.subject = subject\n\nt1 = Teacher("Math")\nprint(f"Teacher of {t1.subject} starts work at {t1.start_time}")',
+        outputCode: "Teacher of Math starts work at 10am",
       },
       {
         subTitle: "Inheritance Structures",
-        text: "Depending on how classes are linked, inheritance is categorized into three primary types. Each serves a specific architectural purpose in software design.",
+        text: "Depending on how classes are linked, inheritance is categorized into different structures to serve specific architectural needs.",
         list: [
-          "Single Level Inheritance: A single child class inherits from a single parent class.",
-          "Multi-level Inheritance: A derived class acts as a parent for another class, creating a chain (Grandparent -> Parent -> Child).",
+          "Single Level: A single child class inherits from a single parent class.",
+          "Multi-level: A chain where a derived class acts as a parent for another class (Grandparent -> Parent -> Child).",
           "Multiple Inheritance: A single child class inherits from more than one parent class simultaneously.",
+          "Diversity: These structures allow for modeling complex biological or organizational relationships in code.",
         ],
+        code: '# Multi-level Inheritance Example\nclass Vehicle:\n    def start(self):\n        print("Vehicle engine started")\n\nclass Car(Vehicle):\n    def drive(self):\n        print("Car is driving")\n\nclass ElectricCar(Car):\n    def charge(self):\n        print("Battery is charging")\n\nmy_tesla = ElectricCar()\nmy_tesla.start()  # Inherited from Vehicle\nmy_tesla.drive()  # Inherited from Car',
+        outputCode: "Vehicle engine started\nCar is driving",
       },
       {
         subTitle: "Pillar 4: Polymorphism",
-        text: "Polymorphism allows a single interface to be used for a general class of actions. The specific action is determined by the exact nature of the object.",
+        text: "Polymorphism enables flexibility by allowing objects of different classes to respond to the same method call in their own unique way.",
         list: [
-          "Definition: The ability of an object to take on many forms.",
-          "Method Overriding: Multiple classes defining the same method name (e.g., move()) but with different internal logic.",
-          "Flexibility: Functions can process different types of objects as long as they follow the same interface.",
+          "Definition: The ability of an object or method to take on multiple forms depending on the context.",
+          "Method Overriding: A child class redefines a parent’s method to provide specific logic while keeping the same name.",
+          "Duck Typing: A Python concept where an object is judged by its behavior (methods) rather than its class type.",
+          "Flexibility: Functions can process a variety of objects as long as they share a common method interface.",
         ],
       },
       {
-        subTitle: "What is Polymorphism?",
-        text: "Polymorphism allows objects of different classes to respond to the same method call in their own way. This is primarily achieved through Function Overriding and Duck Typing.",
+        subTitle: "Method Overriding in Action",
+        text: "By overriding methods, specialized child classes can customize inherited behaviors while maintaining a consistent naming structure across the system.",
         list: [
-          "Function Overriding: Redefining a parent class's function within a child class to change its behavior.",
-          "Duck Typing: A concept where an object's suitability is determined by the presence of certain methods rather than its actual type.",
-          "Flexibility: Allows a single interface (like 'get_designation') to work across diverse object types.",
+          "Implementation: Define a method in the child class with the exact same name as one in the parent class.",
+          "Priority: When the method is called, Python executes the child’s version (the most specific one) first.",
+          "Unified Interface: Allows you to call a method like 'get_details()' on any employee object without worrying if they are a Teacher or an Admin.",
         ],
-        code: '# Method Overriding Example\nclass Employee:\n    def get_designation(self):\n        print("designation = Employee")\n\nclass Teacher(Employee):\n    def get_designation(self):\n        print("designation = Teacher")\n\nt1 = Teacher()\nt1.get_designation() # Calls the overridden version',
-        outputCode: "designation = Teacher",
+        code: '# Method Overriding Example\nclass Employee:\n    def get_role(self):\n        print("Role: General Employee")\n\nclass Teacher(Employee):\n    def get_role(self):\n        print("Role: Teacher")\n\nclass Developer(Employee):\n    def get_role(self):\n        print("Role: Software Developer")\n\n# Polymorphic behavior\nusers = [Teacher(), Developer()]\nfor user in users:\n    user.get_role() # Same method call, different results',
+        outputCode: "Role: Teacher\nRole: Software Developer",
       },
     ],
   },
@@ -1024,6 +986,40 @@ print(f"Total Products in Store: {Product.total_products}")`,
     description:
       "This section contains practice questions to reinforce understanding of Python operators, their precedence, and practical applications in coding scenarios.",
     blocks: [
+      {
+        subTitle: "Project: Product Store System",
+        text: "This project integrates all three types of Python methods to create a functional inventory system. It demonstrates how to manage unique object data while simultaneously tracking global system metrics.",
+        list: [
+          "Requirement 1: Design a 'Product' class to store unique names and prices.",
+          "Requirement 2: Implement a class attribute to track the total number of products created.",
+          "Requirement 3: Create a static method to calculate discounts based on a percentage (%) parameter.",
+          "Requirement 4: Use an instance method to display the final details for each specific product.",
+        ],
+        code: `class Product:
+    total_products = 0  # Class attribute to track inventory
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        Product.total_products += 1
+
+    @staticmethod
+    def calc_discount(price, discount_percent):
+        return price - (price * discount_percent / 100)
+
+    def display_info(self, discount=0):
+        final_price = self.calc_discount(self.price, discount)
+        print(f"Product: {self.name} | Final Price: {final_price}")
+
+# Creating products
+p1 = Product("Laptop", 50000)
+p2 = Product("Mouse", 1000)
+
+p1.display_info(10) # 10% discount
+print(f"Total Products in Store: {Product.total_products}")`,
+        outputCode:
+          "Product: Laptop | Final Price: 45000.0\nTotal Products in Store: 2",
+      },
       {
         subTitle: "Practical Example: Printing Average",
         text: "By combining arithmetic operators and proper variable handling, we can solve real-world mathematical problems. Calculating the average of two numbers is a fundamental exercise in logic and operator precedence.",
