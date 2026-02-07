@@ -78,7 +78,8 @@ export const navigation = [
         id: "machine-learning",
         title: "Machine Learning",
         topics: [
-          { id: "mlintro", label: "ML Introduction" },
+          { id: "mlintro", label: "Introduction" },
+          { id: "supervised", label: "Supervised Learning" },
           { id: "dt2", label: "Demo Topic 2" },
         ],
       },
