@@ -307,7 +307,7 @@ export const pythonContent: Record<string, TopicContent> = {
       },
     ],
   },
-    Strings: {
+  Strings: {
     id: "Strings",
     title: "Python Strings",
     description:
@@ -315,7 +315,7 @@ export const pythonContent: Record<string, TopicContent> = {
     blocks: [
       {
         subTitle: "Introduction to Strings",
-        text:"",
+        text: "",
         list: [
           "Definition: A sequence of characters (e.g., 'python').",
           "Length: The len() function returns the total number of characters in a string.",
@@ -389,12 +389,11 @@ export const pythonContent: Record<string, TopicContent> = {
           "Expressions: You can perform calculations directly within the placeholders.",
           "Readability: F-strings are generally cleaner and easier to read than the .format() method.",
         ],
-        code: '# Using F-Strings for variables and math\na = 5\nb = 10\n\n# Calculation directly inside the string\nprint(f`avg of {a} & {b} is {(a + b) / 2}`)',
+        code: "# Using F-Strings for variables and math\na = 5\nb = 10\n\n# Calculation directly inside the string\nprint(f`avg of {a} & {b} is {(a + b) / 2}`)",
         outputCode: "avg of 5 & 10 is 7.5",
       },
     ],
   },
-  // Unchecked section
   Lists: {
     id: "Lists",
     title: "Python Lists",
@@ -402,8 +401,8 @@ export const pythonContent: Record<string, TopicContent> = {
       "Lists are ordered collections of items that can hold multiple data types. They are mutable, allowing you to modify their contents after creation.",
     blocks: [
       {
-        subTitle: "Python Lists",
-        text: "A list is a mutable sequence of values. It is one of the most powerful and flexible data structures in Python, capable of holding multiple items of different data types.",
+        subTitle: "Introduction to Lists",
+        text: "",
         list: [
           "Definition: A mutable sequence used to store a collection of values.",
           "Heterogeneous: A single list can store different types of data (integers, strings, floats).",
@@ -454,12 +453,7 @@ export const pythonContent: Record<string, TopicContent> = {
       {
         subTitle: "Iterating & Searching Lists",
         text: "Loops are essential for processing every item in a list. You can use a 'for' loop to iterate through all elements or add conditional logic to find a specific value and terminate the loop early using 'break'.",
-        list: [
-          "Iteration: A 'for' loop can directly access each element (val) within a list sequence.",
-          "Linear Search: By combining a loop with a counter (idx) and an 'if' statement, you can locate specific data.",
-          "The 'break' Statement: Used to stop a loop immediately once a specific condition is met, saving processing power.",
-          "Indexing in Loops: Manually tracking an index variable allows you to report the exact position of found data.",
-        ],
+        list: [],
         code: '# Searching for a value in a list\nnums = [1, 2, 3, 10, 4]\nx = 10\nidx = 0\n\nfor val in nums:\n    if(val == x):\n        print(f"{x} found at idx={idx}")\n        break\n    idx += 1',
         outputCode: "10 found at idx=3",
       },
@@ -472,13 +466,12 @@ export const pythonContent: Record<string, TopicContent> = {
       "Tuples are ordered collections of items similar to lists, but they are immutable, meaning their contents cannot be changed after creation. They are useful for storing fixed sets of data.",
     blocks: [
       {
-        subTitle: "Python Tuples",
-        text: "A tuple is an immutable sequence of values. It is used to store multiple items in a single variable, particularly when you want to ensure the data remains constant throughout the program.",
+        subTitle: "Introduction to Tuples",
+        text: "",
         list: [
           "Definition: An immutable sequence of values that cannot be modified after creation.",
           "Syntax: Defined using parentheses () instead of square brackets [].",
           "Heterogeneous: Can store different data types, including integers, strings, and floats.",
-          "Type Check: Use type() to verify a variable is a <class 'tuple'>.",
         ],
         code: '# Defining a tuple\ntup = (1, 2, 3, 4, 5, "abc", 3.14)\n\nprint(tup)\nprint(type(tup))',
         outputCode: "(1, 2, 3, 4, 5, 'abc', 3.14)\n<class 'tuple'>",
@@ -526,8 +519,8 @@ export const pythonContent: Record<string, TopicContent> = {
       "Dictionaries are unordered collections of key-value pairs. They allow for efficient data retrieval based on unique keys, making them ideal for storing related information.",
     blocks: [
       {
-        subTitle: "Python Dictionaries",
-        text: "Dictionaries are used to store data collections in key:value pairs. They are highly efficient for looking up information when you have a unique identifier (the key).",
+        subTitle: "Introduction to Dictionaries",
+        text: "",
         list: [
           "Structure: Data is stored as key:value pairs enclosed in curly braces {}.",
           "Uniqueness: Keys in a dictionary must be unique to avoid data collisions.",
@@ -559,8 +552,9 @@ export const pythonContent: Record<string, TopicContent> = {
           "get(key): Retrieves the value for a key; safer than direct indexing as it handles missing keys.",
           "update(new_dict): Merges another dictionary or iterable of pairs into the current one.",
         ],
-        code: '# Using dictionary methods\ninfo = {"name": "tanushree", "cgpa": 9.2}\n\n# Getting all keys as a list\nprint(list(info.keys()))\n\n# Getting all values as a list\nprint(list(info.values()))',
-        outputCode: "['name', 'cgpa']\n['tanushree', 9.2]",
+        code: `# Comprehensive Dictionary Method Demo\ninfo = {"name": "tanushree", "cgpa": 9.2}\n\n# 1. Retrieval Methods\nprint(f"Keys: {list(info.keys())}")\nprint(f"Values: {list(info.values())}")\nprint(f"Items: {list(info.items())}")\n\n# 2. Safe Access with get()\n# Returns 'Not Specified' instead of a KeyError\nprint(f"Age: {info.get('age', 'Not Specified')}")\n\n# 3. Merging with update()\ninfo.update({"city": "Delhi", "cgpa": 9.5})\nprint(f"Updated Info: {info}")`,
+        outputCode:
+          "Keys: ['name', 'cgpa']\nValues: ['tanushree', 9.2]\nItems: [('name', 'tanushree'), ('cgpa', 9.2)]\nAge: Not Specified\nUpdated Info: {'name': 'tanushree', 'cgpa': 9.5, 'city': 'Delhi'}",
       },
     ],
   },
@@ -571,28 +565,49 @@ export const pythonContent: Record<string, TopicContent> = {
       "Sets are unordered collections of unique items. They are useful for storing distinct values and performing mathematical set operations like union, intersection, and difference.",
     blocks: [
       {
-        subTitle: "Python Sets",
-        text: "Sets are collections of unique elements. They are ideal for situations where you need to ensure no duplicate values exist in your dataset, such as a list of unique user IDs.",
+        subTitle: "Introduction to Sets",
+        text: "",
         list: [
           "Uniqueness: Sets automatically remove any duplicate values.",
           "Unordered: Elements in a set do not have a fixed position or index.",
           "Mutable: You can modify the set by adding or removing elements.",
-          "Syntax: Defined using curly braces {} containing values (e.g., {1, 2, 3}).",
+          "Syntax: Defined using curly braces {} containing values.",
         ],
         code: "# Defining a set with duplicates\ns = {1, 2, 2, 2, 3}\n\nprint(s)\nprint(len(s))  # Only counts unique elements",
         outputCode: "{1, 2, 3}\n3",
       },
       {
         subTitle: "Set Methods",
-        text: "Built-in set methods allow you to dynamically manage unique collections. Note that for methods like pop(), the element removed is random because sets are unordered.",
+        text: "Built-in set methods allow you to dynamically manage unique collections.",
         list: [
           "add(val): Adds a new unique element to the set.",
-          "remove(val): Deletes a specific value from the set.",
+          "remove(val): Deletes a specific value from the set; raises an error if the value is missing.",
           "clear(): Removes every element, leaving the set empty.",
-          "pop(): Removes and returns a random element from the set.",
+          "pop(): Removes and returns a random element from the set due to its unordered nature.",
+          "Deduplication: Sets automatically ignore duplicate additions, keeping the collection unique.",
         ],
-        code: '# Using set methods\ns = {1, 2, 3}\n\n# Adding an element\ns.add(5)\nprint(f"After add: {s}")\n\n# Removing an element\ns.remove(2)\nprint(f"After remove: {s}")',
-        outputCode: "After add: {1, 2, 3, 5}\nAfter remove: {1, 3, 5}",
+        code: `# Using all set methods
+s = {1, 2, 3}
+
+# 1. Adding an element
+s.add(5)
+s.add(3) # Duplicate, will be ignored
+print(f"After add: {s}")
+
+# 2. Removing an element
+s.remove(2)
+print(f"After remove: {s}")
+
+# 3. Popping a random element
+popped_val = s.pop()
+print(f"Popped value: {popped_val}")
+print(f"After pop: {s}")
+
+# 4. Clearing the set
+s.clear()
+print(f"After clear: {s}")`,
+        outputCode:
+          "After add: {1, 2, 3, 5}\nAfter remove: {1, 3, 5}\nPopped value: 1\nAfter pop: {3, 5}\nAfter clear: set()",
       },
       {
         subTitle: "Union & Intersection",
@@ -606,21 +621,25 @@ export const pythonContent: Record<string, TopicContent> = {
       },
     ],
   },
+  // Unchecked section
+
   OOPS: {
     id: "OOPS",
-    title: "Python OOPS (Object-Oriented Programming System)",
+    title: "Python OOPS",
     description:
-      "OOPS is a programming paradigm that uses 'objects' to represent data and methods. It promotes code organization, reusability, and modularity through concepts like classes, inheritance, and encapsulation.",
+      "Object-Oriented Programming (OOP) is a programming paradigm that uses 'classes' and 'objects' to structure software. It evolved from procedural programming to help developers manage complex systems through code reusability.",
     blocks: [
-      {
-        subTitle: "What is OOP?",
-        text: "Object-Oriented Programming (OOP) is a programming paradigm that uses 'classes' and 'objects' to structure software. It evolved from procedural programming to help developers manage complex systems through code reusability.",
-        list: [
-          "Procedural vs OOP: Procedural logic flows through a sequence of functions, while OOP organizes data into logical units.",
-          "Reusability: OOP allows you to write a 'blueprint' once and reuse it to create multiple instances.",
-          "Core Components: The foundation of OOP rests on two primary concepts: Classes and Objects.",
-        ],
-      },
+{
+  subTitle: "What is OOP?",
+  text: "Object-Oriented Programming shifts the focus from writing a sequence of steps to designing a modular system of reusable blueprints.",
+  list: [
+    "Procedural vs OOP: Procedural logic flows through a sequence of functions, while OOP organizes data and behavior into logical units.",
+    "Reusability: OOP allows you to write a 'blueprint' once and reuse it to create multiple instances, saving time and reducing errors.",
+    "Core Components: The foundation of OOP rests on two primary concepts: Classes (the blueprint) and Objects (the actual instance).",
+  ],
+  code: "# Basic OOP Structure\nclass Student:\n    # The Blueprint\n    college = \"Indian Aviation Academy\"\n\n# Creating an Instance (Object)\ns1 = Student()\nprint(s1.college)",
+  outputCode: "Indian Aviation Academy",
+},
       {
         subTitle: "Class & Object",
         text: "Think of a Class as a structural blueprint and an Object as the actual building constructed from it. Every object is an instance of its class.",
@@ -632,15 +651,35 @@ export const pythonContent: Record<string, TopicContent> = {
         code: '# Defining a Class\nclass Student:\n    subject = "Python"\n    college = "ABC"\n\n# Creating Objects (Instances)\nstu1 = Student()\nstu2 = Student()\n\nprint(stu1.subject)\nprint(stu2.college)',
         outputCode: "Python\nABC",
       },
-      {
-        subTitle: "Attributes & Methods",
-        text: "Every class is defined by what it 'is' (attributes) and what it 'does' (methods). These two elements combined create a complete model of a real-world entity.",
-        list: [
-          "Properties / Attributes: Variables that belong to the class (e.g., name, age, year).",
-          "Behaviors / Methods: Functions defined inside a class that perform actions on the data.",
-          "Encapsulation: Grouping attributes and methods into a single unit (the class) simplifies system management.",
-        ],
-      },
+{
+  subTitle: "Attributes & Methods",
+  text: "Attributes represent the data or state of an object, while Methods represent the actions or behaviors that the object can perform.",
+  list: [
+    "Properties / Attributes: Variables that belong to the class, such as 'name', 'age', or 'model'.",
+    "Behaviors / Methods: Functions defined inside a class that perform actions or manipulate the object's data.",
+    "Encapsulation: Grouping attributes and methods into a single unit (the class) simplifies system management and data security.",
+  ],
+  code: `# Modeling a simple Object with Data and Action
+class Aircraft:
+    # Attributes (Data)
+    model = "Boeing 737"
+    status = "Grounded"
+
+    # Method (Behavior)
+    def takeoff(self):
+        self.status = "In Flight"
+        print(f"The {self.model} is now {self.status}.")
+
+# Creating the object
+my_plane = Aircraft()
+
+# Accessing Attribute
+print(f"Current Status: {my_plane.status}")
+
+# Calling Method
+my_plane.takeoff()`,
+  outputCode: "Current Status: Grounded\nThe Boeing 737 is now In Flight.",
+},
       {
         subTitle: "The Constructor (__init__)",
         text: "All classes have a function called __init__(), which is always executed when the class is being initiated. It acts as a setup phase to prepare the object for use.",
@@ -653,7 +692,7 @@ export const pythonContent: Record<string, TopicContent> = {
         outputCode: "System: Object is being constructed..",
       },
       {
-        subTitle: "Parameterized Initialization",
+        subTitle: "Parameterized Constructor",
         text: "By adding parameters to the constructor, you can ensure every object starts with its own unique set of data, rather than shared class-level defaults.",
         list: [
           "Dynamic Data: Pass arguments like 'name' and 'cgpa' during instantiation.",
