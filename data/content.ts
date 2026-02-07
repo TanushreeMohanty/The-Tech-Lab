@@ -74,15 +74,22 @@ export const navigation = [
           { id: "Rough", label: "Rough Work" },
         ],
       },
-      
-      //   {
-      //     id: "data-science",
-      //     title: "Data Science",
-      //     topics: [
-      //       { id: "matplotlib-basics", label: "Matplotlib" },
-      //       { id: "pandas-intro", label: "Pandas" }
-      //     ]
-      //   }
+      {
+        id: "machine-learning",
+        title: "Machine Learning",
+        topics: [
+          { id: "mlintro", label: "ML Introduction" },
+          { id: "dt2", label: "Demo Topic 2" },
+        ],
+      },
+      {
+        id: "demo",
+        title: "Demo Section",
+        topics: [
+          { id: "dt1", label: "Demo Topic 1" },
+          { id: "dt2", label: "Demo Topic 2" },
+        ],
+      },
     ],
   },
 ];
