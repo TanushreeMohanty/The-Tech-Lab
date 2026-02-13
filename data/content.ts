@@ -75,6 +75,35 @@ export const navigation = [
         ],
       },
       {
+        id: "about-data",
+        title: "About This Data",
+        topics: [{ id: "dt1", label: "Demo Topic 1" }],
+      },
+      {
+        id: "python-libraries",
+        title: "Python Libraries",
+        topics: [
+          { id: "numpy", label: "NumPy" },
+          { id: "pandas", label: "Pandas" },
+          { id: "matplotlib", label: "Matplotlib" },
+          { id: "seaborn", label: "Seaborn" },
+        ],
+      },
+      {
+        id: "sql",
+        title: "SQL",
+        topics: [{ id: "dt1", label: "Demo Topic 1" }],
+      },
+      {
+        id: "maths-for-ai",
+        title: "Maths for AI",
+        topics: [
+          { id: "probability", label: "Probability" },
+          { id: "linear-algebra", label: "Linear Algebra" },
+          { id: "calculus", label: "Calculus" },
+        ],
+      },
+            {
         id: "machine-learning",
         title: "Machine Learning",
         topics: [
@@ -84,8 +113,22 @@ export const navigation = [
         ],
       },
       {
-        id: "demo",
-        title: "Demo Section",
+        id:"terminal",
+        title:"Terminal",
+        topics:[ 
+                    { id: "dt1", label: "Demo Topic 1" },
+        ]
+      },
+      {
+        id:"git-and-github",
+        title:"Git and GitHub",
+        topics:[ 
+                    { id: "dt1", label: "Demo Topic 1" },
+        ]
+      },
+      {
+        id: "demo ",
+        title: "Demo Section ❤️",
         topics: [
           { id: "dt1", label: "Demo Topic 1" },
           { id: "dt2", label: "Demo Topic 2" },
