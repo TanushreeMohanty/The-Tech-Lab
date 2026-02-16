@@ -127,6 +127,13 @@ export const navigation = [
         ]
       },
       {
+        id:"deep-learning",
+        title:"Deep Learning",
+        topics:[ 
+                    { id: "dt1", label: "Demo Topic 1" },
+        ]
+      },
+      {
         id: "demo ",
         title: "Demo Section ❤️",
         topics: [
