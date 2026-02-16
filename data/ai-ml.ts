@@ -3,13 +3,14 @@ import { TopicContent } from "./content";
 import { demoContent } from "./demo-content";
 import { mlContent } from "./ml-content";
 import { pythonContent } from "./python";
+import { terminalContent } from "./terminal";
 
 export const aiMlContent: Record<string, Record<string, TopicContent>> = {
   // Python is already modularized in python.ts
   python: pythonContent,
   demo: demoContent, // This key MUST match the 'id' in your navigation
   "machine-learning": mlContent["machine-learning"], // Spread or map the ML subsection
-
+  "terminal": terminalContent["terminal"], // Spread or map the Terminal subsection
   "data-science": {
     "matplotlib-basics": {
       id: "matplotlib-basics",

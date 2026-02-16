@@ -103,7 +103,7 @@ export const navigation = [
           { id: "calculus", label: "Calculus" },
         ],
       },
-            {
+      {
         id: "machine-learning",
         title: "Machine Learning",
         topics: [
@@ -113,25 +113,22 @@ export const navigation = [
         ],
       },
       {
-        id:"terminal",
-        title:"Terminal",
-        topics:[ 
-                    { id: "dt1", label: "Demo Topic 1" },
-        ]
+        id: "terminal",
+        title: "Terminal ❤️",
+        topics: [
+          { id: "intro", label: " Basics :)" },
+          { id: "commands", label: "Commands :)" },
+        ],
       },
       {
-        id:"git-and-github",
-        title:"Git and GitHub",
-        topics:[ 
-                    { id: "dt1", label: "Demo Topic 1" },
-        ]
+        id: "git-and-github",
+        title: "Git and GitHub",
+        topics: [{ id: "dt1", label: "Demo Topic 1" }],
       },
       {
-        id:"deep-learning",
-        title:"Deep Learning",
-        topics:[ 
-                    { id: "dt1", label: "Demo Topic 1" },
-        ]
+        id: "deep-learning",
+        title: "Deep Learning",
+        topics: [{ id: "dt1", label: "Demo Topic 1" }],
       },
       {
         id: "demo ",
