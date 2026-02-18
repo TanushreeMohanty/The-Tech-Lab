@@ -29,7 +29,7 @@ export default async function LabPage({
                     {content.title}<span className={section === 'ai-ml' ? 'text-fuchsia-500' : 'text-cyan-500'}>.</span>
                 </h1>
 
-                <p className="text-xl md:text-xl text-zinc-400 font-light leading-relaxed max-w-5xl border-l-2 border-white/5 pl-8 italic">
+                <p className="text-xl md:text-xl text-zinc-400 font-light leading-relaxed w-full border-l-2 border-white/5 pl-8 italic">
                     {content.description}
                 </p>
             </header>
@@ -37,12 +37,13 @@ export default async function LabPage({
             {/* Experimental Blocks */}
             <div className="space-y-40 ml-8 lg:ml-24">
                 {content.blocks.map((block, index) => {
-                    const hasTechnicalAssets = !!(block.code || block.outputImage || block.outputCode);
+                    const hasTechnicalAssets = !!(block.code || block.outputCode);
                     const hasList = !!(block.list && block.list.length > 0);
+                    const hasReference = !!block.referenceImage;
 
                     return (
                         <section key={index} className="group relative pl-12 lg:pl-16">
-                            <div className="absolute left-0 top-0 bottom-0 w-1px bg-white/5 group-hover:bg-white/20 transition-all duration-500" />
+                            <div className="absolute left-0 top-0 bottom-0 w-px bg-white/5 group-hover:bg-white/20 transition-all duration-500" />
 
                             <div className="absolute -left-12 lg:-left-24 top-0 font-mono text-zinc-900 text-4xl lg:text-6xl font-black select-none group-hover:text-zinc-800/50 transition-colors duration-500 pointer-events-none">
                                 0{index + 1}
@@ -53,38 +54,53 @@ export default async function LabPage({
                                     <h2 className="text-3xl lg:text-3xl font-bold text-white tracking-tight whitespace-nowrap">
                                         {block.subTitle}
                                     </h2>
-                                    <div className="h-1px flex-1 bg-white/10" />
+                                    <div className="h-px flex-1 bg-white/10" />
                                 </div>
                             )}
 
                             <div className="flex flex-col gap-16 w-full">
-                                {/* 1. Full Width Text Area */}
+                                {/* 1. Full Width Description */}
                                 {block.text && (
-                                    <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed font-light w-full max-w-6xl">
+                                    <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed font-light w-full">
                                         {block.text}
                                     </p>
                                 )}
 
-                                {/* 2. Content Grid (Adapts based on presence of List vs Assets) */}
-                                <div className={`grid grid-cols-1 ${hasList && hasTechnicalAssets ? 'lg:grid-cols-2' : 'grid-cols-1'} gap-12 lg:gap-20 items-start w-full`}>
+                                {/* 2. Content Grid */}
+                                {/* Logic: Only use 2 columns if BOTH sides have content. Otherwise, center the single column. */}
+                                <div className={`grid grid-cols-1 ${(hasList || hasReference) && hasTechnicalAssets ? 'lg:grid-cols-2' : 'max-w-4xl mx-auto'} gap-12 lg:gap-20 items-start w-full`}>
 
-                                    {/* List Section - Always Vertical Points */}
-                                    {hasList && (
-                                        <div className={`${!hasTechnicalAssets ? 'max-w-3xl mx-auto w-full' : 'w-full'}`}>
-                                            <ul className="flex flex-col gap-6">
-                                                {block.list.map((item, i) => (
-                                                    <li key={i} className="flex items-start gap-5 text-zinc-300 group/list p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 shadow-sm">
-                                                        <div className={`mt-2.5 w-2 h-2 rounded-full shrink-0 ${section === 'ai-ml' ? 'bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]' : 'bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]'}`} />
-                                                        <span className="text-base font-medium leading-relaxed">{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                    {/* LEFT: Info Column */}
+                                    {(hasList || hasReference) && (
+                                        <div className={`flex flex-col gap-10 w-full ${!hasTechnicalAssets ? 'items-center text-center' : ''}`}>
+                                            {hasList && (
+                                                <ul className={`flex flex-col gap-6 w-full ${!hasTechnicalAssets ? 'max-w-2xl' : ''}`}>
+                                                    {block.list.map((item, i) => (
+                                                        <li key={i} className="flex items-start gap-5 text-zinc-300 group/list p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 shadow-sm w-full text-left">
+                                                            <div className={`mt-2.5 w-2 h-2 rounded-full shrink-0 ${section === 'ai-ml' ? 'bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]' : 'bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]'}`} />
+                                                            <span className="text-base font-medium leading-relaxed">{item}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+
+                                            {hasReference && (
+                                                <div className={`w-full ${!hasTechnicalAssets ? 'max-w-2xl' : ''}`}>
+                                                    <div className="rounded-2xl border border-white/10 bg-white/5 p-2 overflow-hidden shadow-2xl w-full">
+                                                        <img
+                                                            src={typeof block.referenceImage === 'string' ? block.referenceImage : block.referenceImage.src}
+                                                            alt="Reference illustration"
+                                                            className="w-full h-auto rounded-xl opacity-90 group-hover:opacity-100 transition-opacity duration-500 object-cover"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     )}
 
-                                    {/* Technical Assets Area */}
+                                    {/* RIGHT: Assets Column */}
                                     {hasTechnicalAssets && (
-                                        <div className={`space-y-12 w-full ${!hasList ? 'max-w-4xl mx-auto' : ''}`}>
+                                        <div className={`flex flex-col gap-10 w-full ${!(hasList || hasReference) ? 'max-w-4xl mx-auto' : ''}`}>
                                             {block.code && (
                                                 <div className="w-full rounded-2xl border border-white/10 bg-[#080808] overflow-hidden shadow-2xl ring-1 ring-white/5">
                                                     <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-white/10">
@@ -94,7 +110,7 @@ export default async function LabPage({
                                                             <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 border border-emerald-500/30" />
                                                         </div>
                                                         <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest font-bold">
-                                                            {section === 'ai-ml' ? 'python_runtime' : 'react_engine'}
+                                                            {section === 'ai-ml' ? 'python_runtime' : 'terminal_engine'}
                                                         </span>
                                                     </div>
                                                     <pre className="p-6 lg:p-10 text-[14px] lg:text-[15px] font-mono w-full overflow-x-auto leading-relaxed bg-black/40">

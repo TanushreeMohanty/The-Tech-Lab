@@ -5,11 +5,12 @@ import { aiMlContent } from "./ai-ml";
 // Define a Block for multiple content pieces on one page
 export type ContentBlock = {
   subTitle?: string;
-  text: string;
+  text?: string; // Changed to optional in case you have image/code-only blocks
+  list?: string[];
+  referenceImage?: string | StaticImageData; // Update this line
   code?: string;
-  list?: string[]; // Add this line
-  outputImage?: string;
-  outputCode?: string; // Add this for text-based terminal outputs
+  outputImage?: string; // For graphic results (like a plot or UI)
+  outputCode?: string; // For text-based terminal outputs
 };
 
 export type TopicContent = {
@@ -125,8 +126,9 @@ export const navigation = [
         title: "Git and GitHub",
         topics: [
           { id: "intro", label: "Introduction :)" },
-          { id: "commands", label: "Commands" },
-          { id: "dt1", label: "Demo Topic 1" }],
+          { id: "commands", label: "Commands :)" },
+          { id: "shortcuts", label: "Shortcuts :)" },
+        ],
       },
       {
         id: "deep-learning",
