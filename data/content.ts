@@ -1,6 +1,7 @@
 //main data content file aggregating all topic contents
 import { webDevContent } from "./web-dev";
 import { aiMlContent } from "./ai-ml";
+import { StaticImageData } from "next/image";
 
 // Define a Block for multiple content pieces on one page
 export type ContentBlock = {
@@ -136,7 +137,7 @@ export const navigation = [
         topics: [{ id: "dt1", label: "Demo Topic 1" }],
       },
       {
-        id: "demo ",
+        id: "demo",
         title: "Demo Section ❤️",
         topics: [
           { id: "dt1", label: "Demo Topic 1" },

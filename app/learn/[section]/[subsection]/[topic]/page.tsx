@@ -75,8 +75,8 @@ export default async function LabPage({
                                         <div className={`flex flex-col gap-10 w-full ${!hasTechnicalAssets ? 'items-center text-center' : ''}`}>
                                             {hasList && (
                                                 <ul className={`flex flex-col gap-6 w-full ${!hasTechnicalAssets ? 'max-w-2xl' : ''}`}>
-                                                    {block.list.map((item, i) => (
-                                                        <li key={i} className="flex items-start gap-5 text-zinc-300 group/list p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 shadow-sm w-full text-left">
+                                                    {hasList && block.list?.map((item, i) => (
+                                                        <li key={i} className="flex items-start gap-5 text-zinc-300 group/list p-6 rounded-2xl bg-white/3 border border-white/5 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 shadow-sm w-full text-left">
                                                             <div className={`mt-2.5 w-2 h-2 rounded-full shrink-0 ${section === 'ai-ml' ? 'bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]' : 'bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]'}`} />
                                                             <span className="text-base font-medium leading-relaxed">{item}</span>
                                                         </li>
@@ -84,16 +84,15 @@ export default async function LabPage({
                                                 </ul>
                                             )}
 
-                                            {hasReference && (
-                                                <div className={`w-full ${!hasTechnicalAssets ? 'max-w-2xl' : ''}`}>
-                                                    <div className="rounded-2xl border border-white/10 bg-white/5 p-2 overflow-hidden shadow-2xl w-full">
-                                                        <img
-                                                            src={typeof block.referenceImage === 'string' ? block.referenceImage : block.referenceImage.src}
-                                                            alt="Reference illustration"
-                                                            className="w-full h-auto rounded-xl opacity-90 group-hover:opacity-100 transition-opacity duration-500 object-cover"
-                                                        />
-                                                    </div>
+                                            {hasReference && block.referenceImage && (<div className={`w-full ${!hasTechnicalAssets ? 'max-w-2xl' : ''}`}>
+                                                <div className="rounded-2xl border border-white/10 bg-white/5 p-2 overflow-hidden shadow-2xl w-full">
+                                                    <img
+                                                        src={typeof block.referenceImage === 'string' ? block.referenceImage : block.referenceImage.src}
+                                                        alt="Reference illustration"
+                                                        className="w-full h-auto rounded-xl opacity-90 group-hover:opacity-100 transition-opacity duration-500 object-cover"
+                                                    />
                                                 </div>
+                                            </div>
                                             )}
                                         </div>
                                     )}
