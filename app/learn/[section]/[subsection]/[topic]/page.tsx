@@ -38,7 +38,7 @@ export default async function LabPage({
             <div className="space-y-40 ml-8 lg:ml-24">
                 {content.blocks.map((block, index) => {
                     const hasTechnicalAssets = !!(block.code || block.outputImage || block.outputCode);
-                    const hastextContent = !!(block.text || block.list);
+                    const hasList = !!(block.list && block.list.length > 0);
 
                     return (
                         <section key={index} className="group relative pl-12 lg:pl-16">
@@ -57,81 +57,67 @@ export default async function LabPage({
                                 </div>
                             )}
 
-                            <div className={`grid grid-cols-1 ${hasTechnicalAssets && hastextContent ? 'lg:grid-cols-12' : 'grid-cols-1'} gap-12 lg:gap-20 items-start w-full`}>
+                            <div className="flex flex-col gap-16 w-full">
+                                {/* 1. Full Width Text Area */}
+                                {block.text && (
+                                    <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed font-light w-full max-w-6xl">
+                                        {block.text}
+                                    </p>
+                                )}
 
-                                {/* Text Content Area - Updated logic to handle list-only blocks */}
-                                {hastextContent && (
-                                    <div className={`${hasTechnicalAssets ? 'lg:col-span-5' : 'w-full'} space-y-8`}>
-                                        {block.text && (
-                                            <p className="text-zinc-400 text-lg lg:text-xl leading-relaxed max-w-none font-light">
-                                                {block.text}
-                                            </p>
-                                        )}
+                                {/* 2. Content Grid (Adapts based on presence of List vs Assets) */}
+                                <div className={`grid grid-cols-1 ${hasList && hasTechnicalAssets ? 'lg:grid-cols-2' : 'grid-cols-1'} gap-12 lg:gap-20 items-start w-full`}>
 
-                                        {block.list && (
-                                            <ul className={`grid gap-6 pt-6 ${hasTechnicalAssets ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}`}>
+                                    {/* List Section - Always Vertical Points */}
+                                    {hasList && (
+                                        <div className={`${!hasTechnicalAssets ? 'max-w-3xl mx-auto w-full' : 'w-full'}`}>
+                                            <ul className="flex flex-col gap-6">
                                                 {block.list.map((item, i) => (
                                                     <li key={i} className="flex items-start gap-5 text-zinc-300 group/list p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 shadow-sm">
-                                                        <div className={`mt-2.5 w-2 h-2 rounded-full shrink-0 ${section === 'ai-ml' ? 'bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]' : 'bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]'} transition-all`} />
+                                                        <div className={`mt-2.5 w-2 h-2 rounded-full shrink-0 ${section === 'ai-ml' ? 'bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]' : 'bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]'}`} />
                                                         <span className="text-base font-medium leading-relaxed">{item}</span>
                                                     </li>
                                                 ))}
                                             </ul>
-                                        )}
-                                    </div>
-                                )}
+                                        </div>
+                                    )}
 
-                                {/* Technical Assets Area */}
-                                {hasTechnicalAssets && (
-                                    <div className={`${hastextContent ? 'lg:col-span-7' : 'w-full'} space-y-12 w-full`}>
-                                        {block.code && (
-                                            <div className="w-full rounded-2xl border border-white/10 bg-[#080808] backdrop-blur-xl overflow-hidden shadow-2xl ring-1 ring-white/5 group-hover:border-white/20 transition-colors">
-                                                <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-white/10">
-                                                    <div className="flex gap-2.5">
-                                                        <div className="w-3.5 h-3.5 rounded-full bg-red-500/20 border border-red-500/30" />
-                                                        <div className="w-3.5 h-3.5 rounded-full bg-amber-500/20 border border-amber-500/30" />
-                                                        <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 border border-emerald-500/30" />
+                                    {/* Technical Assets Area */}
+                                    {hasTechnicalAssets && (
+                                        <div className={`space-y-12 w-full ${!hasList ? 'max-w-4xl mx-auto' : ''}`}>
+                                            {block.code && (
+                                                <div className="w-full rounded-2xl border border-white/10 bg-[#080808] overflow-hidden shadow-2xl ring-1 ring-white/5">
+                                                    <div className="flex items-center justify-between px-6 py-4 bg-white/5 border-b border-white/10">
+                                                        <div className="flex gap-2.5">
+                                                            <div className="w-3.5 h-3.5 rounded-full bg-red-500/20 border border-red-500/30" />
+                                                            <div className="w-3.5 h-3.5 rounded-full bg-amber-500/20 border border-amber-500/30" />
+                                                            <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 border border-emerald-500/30" />
+                                                        </div>
+                                                        <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest font-bold">
+                                                            {section === 'ai-ml' ? 'python_runtime' : 'react_engine'}
+                                                        </span>
                                                     </div>
-                                                    <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest font-bold">
-                                                        {section === 'ai-ml' ? 'python_runtime' : 'react_engine'}
-                                                    </span>
+                                                    <pre className="p-6 lg:p-10 text-[14px] lg:text-[15px] font-mono w-full overflow-x-auto leading-relaxed bg-black/40">
+                                                        <code className={section === 'ai-ml' ? 'text-fuchsia-300/90' : 'text-cyan-300/90'}>
+                                                            {block.code}
+                                                        </code>
+                                                    </pre>
                                                 </div>
-                                                <pre className="p-6 lg:p-10 text-[14px] lg:text-[15px] font-mono w-full overflow-x-auto leading-relaxed custom-scrollbar bg-black/40">
-                                                    <code className={section === 'ai-ml' ? 'text-fuchsia-300/90' : 'text-cyan-300/90'}>
-                                                        {block.code}
-                                                    </code>
-                                                </pre>
-                                            </div>
-                                        )}
+                                            )}
 
-                                        {block.outputImage && (
-                                            <div className="w-full space-y-4">
-                                                <div className="flex items-center gap-3 px-1">
-                                                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_12px_rgba(16,185,129,0.6)]" />
-                                                    <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.3em] font-bold">Graphic_Output</p>
+                                            {block.outputCode && (
+                                                <div className="w-full rounded-2xl border border-emerald-500/20 bg-[#020202] overflow-hidden shadow-2xl">
+                                                    <div className="flex items-center gap-3 px-6 py-3 bg-emerald-500/5 border-b border-emerald-500/20">
+                                                        <span className="text-[10px] font-mono text-emerald-500/70 uppercase tracking-widest font-black">Terminal Result</span>
+                                                    </div>
+                                                    <pre className="p-8 text-[14px] font-mono text-emerald-400/90 w-full whitespace-pre-wrap leading-relaxed italic">
+                                                        &gt; {block.outputCode}
+                                                    </pre>
                                                 </div>
-                                                <div className="p-1.5 rounded-2xl bg-linear-to-br from-white/10 via-transparent to-transparent border border-white/10 overflow-hidden shadow-2xl w-full flex justify-center lg:justify-start">
-                                                    <img
-                                                        src={block.outputImage}
-                                                        className="rounded-[1.75rem] grayscale hover:grayscale-0 transition-all duration-1000 opacity-90 hover:opacity-100 max-w-full h-auto"
-                                                        alt="Laboratory Artifact"
-                                                    />
-                                                </div>
-                                            </div>
-                                        )}
-
-                                        {block.outputCode && (
-                                            <div className="w-full rounded-2xl border border-emerald-500/20 bg-[#020202] overflow-hidden shadow-2xl ring-1 ring-emerald-500/10">
-                                                <div className="flex items-center gap-3 px-6 py-3 bg-emerald-500/5 border-b border-emerald-500/20">
-                                                    <span className="text-[10px] font-mono text-emerald-500/70 uppercase tracking-widest font-black">Terminal Result</span>
-                                                </div>
-                                                <pre className="p-8 text-[14px] font-mono text-emerald-400/90 w-full whitespace-pre-wrap leading-relaxed italic">
-                                                    &gt; {block.outputCode}
-                                                </pre>
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </section>
                     );

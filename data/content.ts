@@ -121,9 +121,12 @@ export const navigation = [
         ],
       },
       {
-        id: "git-and-github",
+        id: "git",
         title: "Git and GitHub",
-        topics: [{ id: "dt1", label: "Demo Topic 1" }],
+        topics: [
+          { id: "intro", label: "Introduction :)" },
+          { id: "commands", label: "Commands" },
+          { id: "dt1", label: "Demo Topic 1" }],
       },
       {
         id: "deep-learning",
