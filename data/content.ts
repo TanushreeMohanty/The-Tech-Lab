@@ -123,7 +123,7 @@ export const navigation = [
       },
       {
         id: "git",
-        title: "Git and GitHub",
+        title: "Git and GitHub ❤️",
         topics: [
           { id: "intro", label: "Introduction :)" },
           { id: "commands", label: "Commands :)" },
