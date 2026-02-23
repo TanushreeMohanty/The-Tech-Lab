@@ -1,4 +1,4 @@
-import { TopicContent } from "./content";
+import { TopicContent } from "../content";
 
 export const demoContent: Record<string, TopicContent> = {
   dt1: {

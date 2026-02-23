@@ -1,4 +1,4 @@
-import { TopicContent } from "./content";
+import { TopicContent } from "../content";
 
 // Nested structure: Record<subsectionId, Record<topicId, TopicContent>>
 export const mlContent: Record<string, Record<string, TopicContent>> = {

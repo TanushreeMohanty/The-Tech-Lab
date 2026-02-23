@@ -1,10 +1,10 @@
 //aggregates all AI/ML topic contents
 import { TopicContent } from "./content";
-import { demoContent } from "./demo-content";
-import { mlContent } from "./ml-content";
-import { pythonContent } from "./python";
-import { terminalContent } from "./terminal";
-import { gitContent } from "./git";
+import { demoContent } from "./AIML/demo-content";
+import { mlContent } from "./AIML/ml-content";
+import { pythonContent } from "./AIML/python";
+import { terminalContent } from "./AIML/terminal";
+import { gitContent } from "./AIML/git";
 
 export const aiMlContent: Record<string, Record<string, TopicContent>> = {
   // Python is already modularized in python.ts

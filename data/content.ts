@@ -1,6 +1,6 @@
 //main data content file aggregating all topic contents
-import { webDevContent } from "./web-dev";
 import { aiMlContent } from "./ai-ml";
+import { dsaContent } from "./dsa";
 import { StaticImageData } from "next/image";
 
 // Define a Block for multiple content pieces on one page
@@ -26,8 +26,8 @@ export const labData: Record<
   string,
   Record<string, Record<string, TopicContent>>
 > = {
-  "web-development": webDevContent,
   "ai-ml": aiMlContent,
+  "dsa":dsaContent,
 };
 
 // Sidebar Navigation structure
@@ -136,6 +136,20 @@ export const navigation = [
         title: "Deep Learning",
         topics: [{ id: "dt1", label: "Demo Topic 1" }],
       },
+      {
+        id: "demo",
+        title: "Demo Section ❤️",
+        topics: [
+          { id: "dt1", label: "Demo Topic 1" },
+          { id: "dt2", label: "Demo Topic 2" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "dsa",
+    title: "DSA",
+    subsections: [
       {
         id: "demo",
         title: "Demo Section ❤️",

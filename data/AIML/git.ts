@@ -1,6 +1,6 @@
-import { TopicContent } from "./content";
+import { TopicContent } from "../content";
 import img from ".././app/images/image.png";
-import lifecycle from ".././app/images/lifecycle.png";
+import lifecycle from "../../app/images/lifecycle.png";
 export const gitContent: Record<string, TopicContent> = {
   intro: {
     id: "intro",
