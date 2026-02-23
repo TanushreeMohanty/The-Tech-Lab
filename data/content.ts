@@ -1,8 +1,10 @@
 //main data content file aggregating all topic contents
 import { aiMlContent } from "./ai-ml";
 import { dsaContent } from "./dsa";
-import { StaticImageData } from "next/image";
+import { langContent } from "./language";
 
+import { StaticImageData } from "next/image";
+langContent;
 // Define a Block for multiple content pieces on one page
 export type ContentBlock = {
   subTitle?: string;
@@ -27,31 +29,12 @@ export const labData: Record<
   Record<string, Record<string, TopicContent>>
 > = {
   "ai-ml": aiMlContent,
-  "dsa":dsaContent,
+  dsa: dsaContent,
+  language: langContent,
 };
 
 // Sidebar Navigation structure
 export const navigation = [
-  //   {
-  //     id: "web-development",
-  //     title: "Web Development",
-  //     subsections: [
-  //       {
-  //         id: "html",
-  //         title: "HTML",
-  //         topics: [
-  //           { id: "intro", label: "Intro" }
-  //         ]
-  //       },
-  //       {
-  //         id: "react",
-  //         title: "React",
-  //         topics: [
-  //           { id: "hooks", label: "Hooks" }
-  //         ]
-  //       },
-  //     ],
-  //   },
   {
     id: "ai-ml",
     title: "AI / ML",
@@ -135,6 +118,27 @@ export const navigation = [
         id: "deep-learning",
         title: "Deep Learning",
         topics: [{ id: "dt1", label: "Demo Topic 1" }],
+      },
+      {
+        id: "demo",
+        title: "Demo Section ❤️",
+        topics: [
+          { id: "dt1", label: "Demo Topic 1" },
+          { id: "dt2", label: "Demo Topic 2" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "language",
+    title: "Language",
+    subsections: [
+      {
+        id: "java",
+        title: "Java",
+        topics: [
+          { id: "intro", label: "Introduction" },
+        ],
       },
       {
         id: "demo",
