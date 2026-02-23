@@ -158,6 +158,16 @@ export const navigation = [
     title: "DSA",
     subsections: [
       {
+        id: "summary",
+        title: "Summary",
+        topics: [
+          { id: "dsa1", label: "Introduction :)" },
+          { id: "dsa2", label: "Types of DS :)" },
+
+          { id: "dt2", label: "Demo Topic 2" },
+        ],
+      },
+      {
         id: "demo",
         title: "Demo Section ❤️",
         topics: [
