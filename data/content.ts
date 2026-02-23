@@ -138,6 +138,9 @@ export const navigation = [
         title: "Java",
         topics: [
           { id: "intro", label: "Introduction" },
+          { id: "controlstat", label: "Control Structures" },
+          { id: "func", label: "Functions" },
+          { id: "oops", label: "OOPS" },
         ],
       },
       {
