@@ -168,6 +168,22 @@ export const navigation = [
         ],
       },
       {
+        id: "array",
+        title: "Arrays",
+        topics: [
+          { id: "dt1", label: "Demo Topic 1" },
+          { id: "dt2", label: "Demo Topic 2" },
+        ],
+      },
+      {
+        id: "dsaques",
+        title: "DSA Questions ",
+        topics: [
+          { id: "dt1", label: "Demo Topic 1" },
+          { id: "dt2", label: "Demo Topic 2" },
+        ],
+      },
+      {
         id: "demo",
         title: "Demo Section ❤️",
         topics: [
