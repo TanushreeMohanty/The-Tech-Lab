@@ -1,5 +1,7 @@
 import { TopicContent } from "../content";
-import typesofds from "../../app/images/typesofds.png";
+import typesofds1 from "../../app/images/typesofds1.png";
+import typesofds2 from "../../app/images/typesofds2.png";
+
 export const summaryContent: Record<string, TopicContent> = {
   dsa1: {
     id: "dsa1",
@@ -45,7 +47,7 @@ export const summaryContent: Record<string, TopicContent> = {
           "Queues (FIFO): First-In-First-Out logic; vital for asynchronous data transfer and CPU scheduling.",
           "Hash Tables: Uses a hash function to map keys to values, providing average O(1) efficiency for search and insertion.",
         ],
-        referenceImage: typesofds,
+        referenceImage: typesofds1,
         code: '// 1. Array\nint[] nums = {10, 20, 30};\n\n// 2. LinkedList\njava.util.LinkedList<String> list = new java.util.LinkedList<>();\nlist.add("First");\n\n// 3. Stack (LIFO)\njava.util.Stack<Integer> stack = new java.util.Stack<>();\nstack.push(100);\n\n// 4. Queue (FIFO)\njava.util.Queue<Integer> q = new java.util.LinkedList<>();\nq.add(1);\n\n// 5. HashMap (Key-Value)\njava.util.HashMap<String, String> map = new java.util.HashMap<>();\nmap.put("ID", "A101");',
         outputCode:
           "// Linear structures initialized for sequential data management",
@@ -59,6 +61,7 @@ export const summaryContent: Record<string, TopicContent> = {
           "Graphs: Networks of 'Vertices' (nodes) and 'Edges' (connections). Used in social networks and GPS pathfinding.",
           "Representations: Graphs are stored as Adjacency Lists (arrays of lists) or Adjacency Matrices (2D arrays).",
         ],
+        referenceImage: typesofds2,
         code: "// 1. Binary Tree Node\nclass Node {\n    int val;\n    Node left, right;\n    Node(int v) { val = v; }\n}\n\n// 2. Graph (Adjacency List)\njava.util.Map<Integer, java.util.List<Integer>> graph = new java.util.HashMap<>();\nvoid addEdge(int src, int dest) {\n    graph.computeIfAbsent(src, k -> new java.util.ArrayList<>()).add(dest);\n}\n\n// Usage\nNode root = new Node(10);\nroot.left = new Node(5);\naddEdge(0, 1); // Edge from node 0 to 1",
         outputCode:
           "// Hierarchical (Tree) and Network (Graph) structures implemented",

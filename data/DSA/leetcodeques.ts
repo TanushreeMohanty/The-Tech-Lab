@@ -1,6 +1,6 @@
 import { TopicContent } from "../content";
 
-export const dsaquesContent: Record<string, TopicContent> = {
+export const leetcodequesContent: Record<string, TopicContent> = {
   dt1: {
     id: "dt1",
     title: "Demo Topic 1",

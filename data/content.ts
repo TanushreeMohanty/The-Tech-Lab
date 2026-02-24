@@ -176,8 +176,8 @@ export const navigation = [
         ],
       },
       {
-        id: "dsaques",
-        title: "DSA Questions ",
+        id: "leetcodeques",
+        title: "Leetcode Questions ",
         topics: [
           { id: "dt1", label: "Demo Topic 1" },
           { id: "dt2", label: "Demo Topic 2" },
