@@ -180,6 +180,7 @@ export const navigation = [
         id: "array",
         title: "Arrays",
         topics: [
+          { id: "lques", label: "Leetcode Questions" },
           { id: "dt1", label: "Demo Topic 1" },
           { id: "dt2", label: "Demo Topic 2" },
         ],
