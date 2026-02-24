@@ -1,6 +1,7 @@
 import { TopicContent } from "../content";
 import typesofds1 from "../../app/images/typesofds1.png";
 import typesofds2 from "../../app/images/typesofds2.png";
+import typesofds3 from "../../app/images/typesofds3.png";
 
 export const summaryContent: Record<string, TopicContent> = {
   dsa1: {
@@ -18,6 +19,7 @@ export const summaryContent: Record<string, TopicContent> = {
           "Abstract Data Types (ADT): A model that defines the logical properties of data and operations (e.g., the 'Stack' concept) regardless of implementation.",
           "Efficiency: Measured using Big O notation for Time Complexity (processing speed) and Space Complexity (memory usage).",
         ],
+        referenceImage: typesofds3,
       },
       {
         subTitle: "Importance of Data Structures",

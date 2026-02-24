@@ -168,6 +168,15 @@ export const navigation = [
         ],
       },
       {
+        id: "complexity",
+        title: "Complexity ❤️",
+        topics: [
+          { id: "bigo", label: "Big O Notation :)" },
+          { id: "timecomp", label: "Time complexity :)" },
+          { id: "spacecomp", label: "Space complexity :)" },
+        ],
+      },
+      {
         id: "array",
         title: "Arrays",
         topics: [
